@@ -1,0 +1,37 @@
+plugin.tx_news {
+	view {
+		templateRootPaths {
+			40 = EXT:dinner_club/Resources/Private/Templates/
+		}
+		partialRootPaths {
+			40 = EXT:dinner_club/Resources/Private/Partials/
+		}
+	}
+}
+
+page = PAGE
+
+page.includeCSS {
+	bootstrap = EXT:dinner_club/Resources/Public/CSS/bootstrap.min.css
+	bootstrap-theme = EXT:dinner_club/Resources/Public/CSS/bootstrap-theme.min.css
+	formvalidator = EXT:dinner_club/Resources/Public/CSS/validator.css
+}
+
+page.includeJS {
+	bootstrap = EXT:dinner_club/Resources/Public/JavaScript/bootstrap.min.css
+}
+
+page.shortcutIcon = EXT:dinner_club/Resources/Public/Icons/favicon.ico
+
+page.10 = FLUIDTEMPLATE
+page.10 {
+	extbase {
+		controllerExtensionName = DinnerClub
+	}
+	variables {
+		content < styles.content.get
+	}
+	layoutRootPath = EXT:dinner_club/Resources/Private/Layouts/Page/
+	file = EXT:dinner_club/Resources/Private/Templates/Page/default.html
+}
+

@@ -1,0 +1,55 @@
+<f:layout name="DinnerClub" />
+
+<f:section name="head">
+      <nav>
+	<ul class="nav nav-pills pull-right">
+	  <li role="presentation" class="active"><a href="#">N&auml;chste Termine</a></li>
+	  <li role="presentation"><a href="#">Programm&uuml;bersicht</a></li>
+	  <li role="presentation"><a href="#">Ich will kochen</a></li>
+	</ul>
+      </nav>
+</f:section>
+
+<f:section name="left">
+	<a href="index.html" class="dc-logo">
+	  <img src="{f:uri.resource(path: 'Images/dc-logo.png')}" width="150">
+	  <p class="text-justify">
+	    KULTUR &amp; KÜCHE<br>INTERNATIONAL
+	  </p>
+	</a>
+</f:section>
+
+<f:section name="main">
+<f:comment>
+  <f:cObject typoscriptObjectPath="styles.content.get" />
+  </f:comment>
+  {content -> f:format.raw()}
+	<div class="jumbotron text-center">
+	  <p>N&auml;chster Dinner Club:</p>
+	  <h2>Mi 15.4.: Cocina Öspañola</h2>
+	  <p class="lead">
+	    Tirol &amp; España treffn si in da Küch
+	  </a>
+	  <p>
+	  <a class="btn btn-lg btn-success" href="registration.html" role="button">Anmelden<br><span class="small">bisher: 18</span></a>
+	  </p>
+	</div>
+
+	<div class="jumbotron">
+	  <p>Fr 14.4.: Frühlingsgefühle in Tirol.</p>
+	  <p class="lead">
+	    Der 5 Elemente Ernährungsberater Treff kocht zugunsten des Hauses
+	  </a>
+	  <p><a class="btn-sm btn-success pull-right" href="registration.html" role="button">Anmelden</a></p>
+	  <span class="clearfix"></span>
+	</div>
+
+	<p>
+	<a class="btn btn-lg">Weitere Termine</a>
+	<a class="btn btn-lg">Vergangene Termine</a>
+	</p>
+</f:section>
+
+<f:section name="foot">
+      <p>Dinner Club Innsbruck. Jeden Mittwoch und Freitag im Haus Marillac, Sennstraße 3, Innsbruck</p>
+</f:section>

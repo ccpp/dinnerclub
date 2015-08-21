@@ -1,0 +1,2 @@
+#plugin.tx_news.view.templateRootPath = 
+#plugin.tx_news.view.partialRootPath =
