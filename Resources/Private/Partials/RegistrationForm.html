@@ -1,0 +1,24 @@
+	  <f:form pageUid="27" extensionName="DinnerClub" pluginName="piRegister" action="register" class="form-horizontal">
+	    <h3>Anmeldung zum Dinner Club</h3>
+	    <p>{newsItem.datetime -> f:format.date(format: '%A %d. %B')} {newsItem.title}</p>
+	    <div class="form-group">
+	      <label for="n-persons" class="col-sm-4">Wie viele?</label>
+	      <div class="col-sm-8">
+		<f:form.textfield type="number" additionalAttributes="{min: 1 step:1}" required="required" class="form-control" id="n-persons" name="n-persons" value="2" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="name" class="col-sm-4">Wer?</label>
+	      <div class="col-sm-8">
+		<f:form.textfield type="text" class="form-control" id="name" placeholder="Name" required="required" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <div class="col-sm-offset-4 col-sm-8">
+		<f:form.submit class="btn btn-primary" additionalAttributes="{role: 'button'}" value="Anmelden" />
+	      </div>
+	    </div>
+	    <p class="text-small">Das Dinner Club-Team freut sich auf dich!</p>
+	  </f:form>
+	</div>
+

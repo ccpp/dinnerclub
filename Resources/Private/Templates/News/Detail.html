@@ -1,0 +1,22 @@
+{namespace dc=CP\DinnerClub\ViewHelpers}
+<f:layout name="Detail.html" />
+
+<f:section name="content">
+<div class="jumbotron">
+<f:if condition="{settings.templateLayout} == 55"><f:comment>Registration</f:comment>
+<f:then>
+  <f:if condition="{newsItem -> dc:registrationAllowed()}">
+    <f:then>
+      <f:render partial="RegistrationForm" arguments="{newsItem: newsItem}" />
+    </f:then>
+    <f:else>
+    <f:render partial="EventDetail" arguments="{newsItem: newsItem}" />
+    </f:else>
+  </f:if>
+</f:then>
+<f:else>
+  TODO Detailansicht?
+</f:else>
+</f:if>
+</div>
+</f:section>

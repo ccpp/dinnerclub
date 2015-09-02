@@ -1,0 +1,27 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+{namespace dc=CP\DinnerClub\ViewHelpers}
+<n:excludeDisplayedNews newsItem="{newsItem}"/>
+
+  <f:if condition="{iterator.isFirst}">
+    <f:then>
+	<div class="jumbotron text-center">
+	  <p>N&auml;chster Dinner Club:</p>
+	  <h2>{newsItem.datetime -> f:format.date(format: '%A %d. %B')}: {newsItem.title}</h2>
+	  <p class="lead">{newsItem.teaser}</p>
+	  <p>
+	  <n:link settings="{settings}" class="btn btn-lg btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+	  Anmelden<br><span class="small">bisher: {dc:countRegistrations(newsItem: newsItem)}</span>
+	  </n:link>
+	  </p>
+	</div>
+    </f:then>
+    <f:else>
+	<div class="jumbotron">
+	  <p>{newsItem.datetime -> f:format.date(format: '%A %d.%B')}: {newsItem.title}</p>
+	  <p class="lead">{newsItem.teaser}</p>
+	  <p><a class="btn-sm btn-success pull-right" href="registration.html" role="button">Anmelden</a></p>
+	  <span class="clearfix"></span>
+	</div>
+    </f:else>
+  </f:if>
+
