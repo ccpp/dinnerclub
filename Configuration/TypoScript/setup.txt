@@ -9,6 +9,18 @@ plugin.tx_news {
 	}
 }
 
+lib.mainmenu = HMENU
+lib.mainmenu {
+	wrap = <ul class="nav nav-pills pull-right">|</ul>
+
+	1 = TMENU
+	1.NO = 1
+	1.NO.wrapItemAndSub = <li role="presentation">|</li>
+
+	1.CUR = 1
+	1.CUR.wrapItemAndSub = <li role="presentation" class="active">|</li>
+}
+
 page = PAGE
 
 page.includeCSS {
@@ -30,7 +42,9 @@ page.10 {
 		controllerExtensionName = DinnerClub
 	}
 	variables {
+		leftContent < styles.content.getLeft
 		content < styles.content.get
+		menu < lib.mainmenu
 	}
 	layoutRootPath = EXT:dinner_club/Resources/Private/Layouts/Page/
 	file = EXT:dinner_club/Resources/Private/Templates/Page/default.html

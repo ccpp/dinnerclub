@@ -2,11 +2,7 @@
 
 <f:section name="head">
       <nav>
-	<ul class="nav nav-pills pull-right">
-	  <li role="presentation" class="active"><a href="#">N&auml;chste Termine</a></li>
-	  <li role="presentation"><a href="#">Programm&uuml;bersicht</a></li>
-	  <li role="presentation"><a href="#">Ich will kochen</a></li>
-	</ul>
+	{menu -> f:format.raw()}
       </nav>
 </f:section>
 
@@ -17,6 +13,7 @@
 	    KULTUR &amp; KÜCHE<br>INTERNATIONAL
 	  </p>
 	</a>
+  {leftContent -> f:format.raw()}
 </f:section>
 
 <f:section name="main">
