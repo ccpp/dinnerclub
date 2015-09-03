@@ -43,8 +43,11 @@ page.10 {
 	}
 	variables {
 		leftContent < styles.content.getLeft
+		leftContent.slide = -1
 		content < styles.content.get
 		menu < lib.mainmenu
+		footerContent < styles.content.getBorder
+		footerContent.slide = -1
 	}
 	layoutRootPath = EXT:dinner_club/Resources/Private/Layouts/Page/
 	file = EXT:dinner_club/Resources/Private/Templates/Page/default.html

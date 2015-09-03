@@ -7,12 +7,6 @@
 </f:section>
 
 <f:section name="left">
-	<a href="index.html" class="dc-logo">
-	  <img src="{f:uri.resource(path: 'Images/dc-logo.png')}" width="150">
-	  <p class="text-justify">
-	    KULTUR &amp; KÜCHE<br>INTERNATIONAL
-	  </p>
-	</a>
   {leftContent -> f:format.raw()}
 </f:section>
 
@@ -21,13 +15,8 @@
   <f:cObject typoscriptObjectPath="styles.content.get" />
   </f:comment>
   {content -> f:format.raw()}
-
-	<p>
-	<a class="btn btn-lg">Weitere Termine</a>
-	<a class="btn btn-lg">Vergangene Termine</a>
-	</p>
 </f:section>
 
 <f:section name="foot">
-      <p>Dinner Club Innsbruck. Jeden Mittwoch und Freitag im Haus Marillac, Sennstraße 3, Innsbruck</p>
+  {footerContent -> f:format.raw()}
 </f:section>
