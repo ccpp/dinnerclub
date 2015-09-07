@@ -1,6 +1,6 @@
 	  <f:form pageUid="27" extensionName="DinnerClub" pluginName="piRegister" action="register" class="form-horizontal">
 	    <h3>Anmeldung zum Dinner Club</h3>
-	    <p>{newsItem.datetime -> f:format.date(format: '%A %d. %B')} {newsItem.title}</p>
+	    <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" />:</p>
 	    <div class="form-group">
 	      <label for="n-persons" class="col-sm-4">Wie viele?</label>
 	      <div class="col-sm-8">

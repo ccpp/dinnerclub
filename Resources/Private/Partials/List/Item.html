@@ -5,8 +5,9 @@
   <f:if condition="{iterator.isFirst}">
     <f:then>
 	<div class="jumbotron text-center">
-	  <p>N&auml;chster Dinner Club:</p>
-	  <h2>{newsItem.datetime -> f:format.date(format: '%A %d. %B')}: {newsItem.title}</h2>
+	  <p>N&auml;chster Dinner Club:<br>
+	  <f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" />:</p>
+	  <h2>{newsItem.title}</h2>
 	  <p class="lead">{newsItem.teaser}</p>
 	  <p>
 	  <n:link settings="{settings}" class="btn btn-lg btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
@@ -17,7 +18,7 @@
     </f:then>
     <f:else>
 	<div class="jumbotron">
-	  <p>{newsItem.datetime -> f:format.date(format: '%A %d.%B')}: {newsItem.title}</p>
+	  <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" />: {newsItem.title}</p>
 	  <p class="lead">{newsItem.teaser}</p>
 	  <p><a class="btn-sm btn-success pull-right" href="registration.html" role="button">Anmelden</a></p>
 	  <span class="clearfix"></span>
