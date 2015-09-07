@@ -26,6 +26,7 @@ page = PAGE
 page.includeCSS {
 	bootstrap = EXT:dinner_club/Resources/Public/CSS/bootstrap.min.css
 	bootstrap-theme = EXT:dinner_club/Resources/Public/CSS/bootstrap-theme.min.css
+	css-styled-content = EXT:dinner_club/Resources/Public/CSS/css-styled-content.css
 	jumbotron = EXT:dinner_club/Resources/Public/CSS/jumbotron-narrow.css
 	formvalidator = EXT:dinner_club/Resources/Public/CSS/validator.css
 }
