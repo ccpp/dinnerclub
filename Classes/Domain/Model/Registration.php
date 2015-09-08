@@ -13,4 +13,9 @@ class Registration extends AbstractEntity {
 	 * @var \string
 	 */
 	public $name;
+
+	/**
+	 * @var \int
+	 */
+	public $count;
 }
