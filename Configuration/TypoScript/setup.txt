@@ -54,3 +54,21 @@ page.10 {
 	file = EXT:dinner_club/Resources/Private/Templates/Page/default.html
 }
 
+
+# ==============================================
+# Persistence object mapping configuration for tx_news
+# ==============================================
+config.tx_extbase.persistence.classes {
+	GeorgRinger\News\Domain\Model\News {
+		subclasses {
+			60 = CP\DinnerClub\Domain\Model\DinnerClubEvent
+		}
+	}
+
+	CP\DinnerClub\Domain\Model\DinnerClubEvent {
+		mapping {
+			recordType = 60
+			tableName = tx_news_domain_model_news
+		}
+	}
+}
