@@ -1,3 +1,10 @@
+plugin.tx_dinnerclub {
+	settings {
+		defaultDetailPid = {$plugin.tx_dinnerclub.settings.detailPid}
+		dinnerClubRegistrationPid = {$plugin.tx_dinnerclub.settings.registrationPid}
+	}
+}
+
 plugin.tx_news {
 	view {
 		templateRootPaths {
@@ -6,6 +13,10 @@ plugin.tx_news {
 		partialRootPaths {
 			40 = EXT:dinner_club/Resources/Private/Partials/
 		}
+	}
+	settings {
+		defaultDetailPid = {$plugin.tx_dinnerclub.settings.detailPid}
+		dinnerClubRegistrationPid = {$plugin.tx_dinnerclub.settings.registrationPid}
 	}
 }
 

@@ -1,16 +1,16 @@
-	  <f:form pageUid="27" extensionName="DinnerClub" pluginName="piRegister" action="register" class="form-horizontal">
+	  <f:form pageUid="{settings.dinnerClubRegistrationPid}" extensionName="DinnerClub" controller="Registration" pluginName="piRegistration" arguments="{event: newsItem}" action="confirm" class="form-horizontal">
 	    <h3>Anmeldung zum Dinner Club</h3>
 	    <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" />:</p>
 	    <div class="form-group">
 	      <label for="n-persons" class="col-sm-4">Wie viele?</label>
 	      <div class="col-sm-8">
-		<f:form.textfield type="number" additionalAttributes="{min: 1 step:1}" required="required" class="form-control" id="n-persons" name="n-persons" value="2" />
+		<f:form.textfield type="number" additionalAttributes="{min: 1 step:1}" required="required" class="form-control" id="n-persons" name="count" value="2" />
 	      </div>
 	    </div>
 	    <div class="form-group">
 	      <label for="name" class="col-sm-4">Wer?</label>
 	      <div class="col-sm-8">
-		<f:form.textfield type="text" class="form-control" id="name" placeholder="Name" required="required" />
+		<f:form.textfield type="text" name="name" class="form-control" id="name" placeholder="Name" required="required" />
 	      </div>
 	    </div>
 	    <div class="form-group">
@@ -20,5 +20,3 @@
 	    </div>
 	    <p class="text-small">Das Dinner Club-Team freut sich auf dich!</p>
 	  </f:form>
-	</div>
-

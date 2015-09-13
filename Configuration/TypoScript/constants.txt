@@ -1,2 +1,4 @@
-#plugin.tx_news.view.templateRootPath = 
-#plugin.tx_news.view.partialRootPath =
+# cat=plugin.tx_dinnerclub//a; type=int+; label=Detail (and registration form) page ID
+plugin.tx_dinnerclub.settings.detailPid =
+# cat=plugin.tx_dinnerclub//b; type=int+; label=Registration page ID
+plugin.tx_dinnerclub.settings.registrationPid =

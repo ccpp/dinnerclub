@@ -8,3 +8,14 @@ tx_news.templateLayouts {
 	56 = Detailansicht ohne Registration
 }
 ');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'CP.DinnerClub',
+	'piRegistration',
+	array(
+		'Registration' => 'confirm, register'
+	),
+	array(
+		'Registration' => 'confirm, register'
+	)
+);
