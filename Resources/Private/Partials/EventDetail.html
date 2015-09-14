@@ -1,3 +1,28 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+{namespace dc=CP\DinnerClub\ViewHelpers}
 
-	    <p>{newsItem.datetime -> f:format.date(format: '%A %d. %B')} {newsItem.title}</p>
+	    <p><f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:month.{newsItem.datetime -> f:format.date(format: 'm')}" />:</p>
+	    <h3>{newsItem.title}</h3>
+
+<f:comment>if past:
 	    <p>Termin bereits vergangen</p>
+</f:comment>
+
+<f:if condition="{showRegistrations}">
+<f:security.ifAuthenticated>
+<f:alias map="{registrations: '{newsItem -> dc:getRegistrations()}'}">
+	<p>Tischanmeldungen: {registrations -> f:count()}</p>
+	<dl>
+	<f:for each="{registrations}" as="registration">
+		<dt>{registration.name}:</dt>
+		<dd>{registration.count} Personen</dd>
+	</f:for>
+	</dl>
+	<a class="btn btn-default" href="#" onclick="window.print();">Drucken</a>
+</f:alias>
+</f:security.ifAuthenticated>
+</f:if>
+
+<f:link.page class="btn btn-default" pageUid="{settings.backPid}">
+	<f:translate key="back-link" />
+</f:link.page>

@@ -6,6 +6,7 @@ tx_news.templateLayouts {
 	54 = Startansicht
 	55 = Registration
 	56 = Detailansicht ohne Registration
+	57 = Detailansicht mit Anmeldungen
 }
 ');
 

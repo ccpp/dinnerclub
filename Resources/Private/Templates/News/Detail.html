@@ -3,8 +3,8 @@
 
 <f:section name="content">
 <div class="jumbotron">
-<f:if condition="{settings.templateLayout} == 55"><f:comment>Registration</f:comment>
-<f:then>
+<f:switch expression="{settings.templateLayout}">
+<f:case value="55"><f:comment>Registration</f:comment>
   <f:if condition="{newsItem -> dc:registrationAllowed()}">
     <f:then>
       <f:render partial="RegistrationForm" arguments="{newsItem: newsItem}" />
@@ -13,10 +13,16 @@
     <f:render partial="EventDetail" arguments="{newsItem: newsItem}" />
     </f:else>
   </f:if>
-</f:then>
-<f:else>
-  TODO Detailansicht?
-</f:else>
-</f:if>
+</f:case>
+<f:case value="55"><f:comment>Detailansicht ohne Registration</f:comment>
+  <f:render partial="EventDetail" arguments="{newsItem: newsItem}" />
+</f:case>
+<f:case value="57"><f:comment>Detail mit Anmeldungen</f:comment>
+  <f:render partial="EventDetail" arguments="{newsItem: newsItem, showRegistrations: 1}" />
+</f:case>
+<f:case value=""><f:comment>Detail mit Anmeldungen</f:comment>
+  No news template chosen
+</f:case>
+</f:switch>
 </div>
 </f:section>

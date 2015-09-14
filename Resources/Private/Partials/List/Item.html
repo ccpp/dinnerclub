@@ -13,6 +13,11 @@
 	  <n:link settings="{settings}" class="btn btn-lg btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 	  Anmelden<br><span class="small">bisher: {dc:countRegistrations(newsItem: newsItem)}</span>
 	  </n:link>
+	  <f:security.ifAuthenticated>
+	    <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+	    Anmeldungen
+	    </n:link>
+	  </f:security.ifAuthenticated>
 	  </p>
 	</div>
     </f:then>
@@ -20,7 +25,14 @@
 	<div class="jumbotron">
 	  <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" />: {newsItem.title}</p>
 	  <p class="lead">{newsItem.teaser}</p>
-	  <p><a class="btn-sm btn-success pull-right" href="registration.html" role="button">Anmelden</a></p>
+	  <p class="pull-right">
+	  <n:link settings="{settings}" class="btn-sm btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Anmelden</n:link>
+	  <f:security.ifAuthenticated>
+	    <n:link configuration="{parameter: 9}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+	    Anmeldungen
+	    </n:link>
+	  </f:security.ifAuthenticated>
+	  </p>
 	  <span class="clearfix"></span>
 	</div>
     </f:else>
