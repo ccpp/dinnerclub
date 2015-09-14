@@ -1,6 +1,6 @@
 	  <f:form arguments="{event: event, count: count, name: name}" action="register" class="form-horizontal">
 	    <h3>Bestätigung der Tischreservierung</h3>
-	    <p><f:translate key="day.{event.datetime -> f:format.date(format: 'w')}" /> {event.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{event.datetime -> f:format.date(format: 'm')}" />:</p>
+	    <p><f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:day.{event.datetime -> f:format.date(format: 'w')}" /> {event.datetime -> f:format.date(format: 'j.')} <f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:month.{event.datetime -> f:format.date(format: 'm')}" />:</p>
 	    <div class="form-group">
 	      <label for="n-persons" class="col-sm-4">Wie viele?</label>
 	      <div class="col-sm-8">
