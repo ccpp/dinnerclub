@@ -52,6 +52,24 @@ page.includeJS {
 
 page.shortcutIcon = EXT:dinner_club/Resources/Public/Icons/favicon.ico
 
+page.cssInline.10 = FILES
+page.cssInline.10 {
+	references {
+		data = levelmedia:-1,slide
+	}
+	renderObj = TEXT
+	renderObj {
+		stdWrap.data = file:current:publicUrl
+		stdWrap.wrap (
+			body {
+				background: url(/dinnerclub/|);
+				background-size: 100%;
+			}
+		)
+	}
+}
+
+
 page.10 = FLUIDTEMPLATE
 page.10 {
 	extbase {
