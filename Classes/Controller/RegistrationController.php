@@ -3,6 +3,7 @@ namespace CP\DinnerClub\Controller;
 
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use GeorgRinger\News\Domain\Model\News;
+use CP\DinnerClub\Domain\Model\Registration;
 
 class RegistrationController extends ActionController {
 
@@ -19,31 +20,19 @@ class RegistrationController extends ActionController {
 	protected $cacheService;
 
 	/**
-	 * @param \GeorgRinger\News\Domain\Model\News $event
-	 * @param \int $count
-	 * @param \string $name
+	 * @param \CP\DinnerClub\Domain\Model\Registration $registration
 	 */
-	public function confirmAction(News $event, $count, $name) {
-		$this->view->assign('event', $event);
-		$this->view->assign('count', $count);
-		$this->view->assign('name', $name);
+	public function confirmAction(Registration $registration) {
+		$this->view->assign('event', $registration->event);
+		$this->view->assign('registration', $registration);
 	}
 
 	/**
-	 * @param \GeorgRinger\News\Domain\Model\News $event
-	 * @param \int $count
-	 * @param \string $name
+	 * @param \CP\DinnerClub\Domain\Model\Registration $registration
 	 */
-	public function registerAction(News $event, $count, $name) {
-		$registration = $this->objectManager->create('CP\\DinnerClub\\Domain\\Model\\Registration');
-		$registration->event = $event;
-		$registration->count = $count;
-		$registration->name = $name;
-		$registration->setPid($event->getPid());
+	public function registerAction(Registration $registration) {
+		$registration->setPid($registration->event->getPid());
 		$this->registrationRepository->add($registration);
-
-		// TODO clear news page's cache (get from template?)
-		$this->cacheService->clearPageCache(array(1, 3));
 
 		$this->uriBuilder->reset()->setTargetPageUid($this->settings['startPage']);
 		$this->redirectToUri($this->uriBuilder->uriFor());
