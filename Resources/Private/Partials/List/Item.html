@@ -2,7 +2,7 @@
 {namespace dc=CP\DinnerClub\ViewHelpers}
 <n:excludeDisplayedNews newsItem="{newsItem}"/>
 
-  <f:if condition="{iterator.isFirst}">
+  <f:if condition="{0: iterator.isFirst, 1: settings.templateLayout} == {0: 1, 1: 54}">
     <f:then>
 	<div class="jumbotron text-center">
 	  <p>N&auml;chster Dinner Club:<br>
