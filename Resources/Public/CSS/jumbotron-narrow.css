@@ -43,12 +43,14 @@ body {
 .container {
   background-color: white;
   border-radius: 6px;
+  padding: 15px;
 }
 
 /* Main marketing message and sign up button */
 .jumbotron {
   /* text-align: center; */
   border-bottom: 1px solid #e5e5e5;
+  padding: 15px;
 }
 .jumbotron .btn {
   padding: 14px 24px;
