@@ -4,3 +4,5 @@ plugin.tx_dinnerclub.settings.detailPid =
 plugin.tx_dinnerclub.settings.registrationPid =
 # cat=plugin.tx_dinnerclub//b; type=int+; label=Page with registratino details
 plugin.tx_dinnerclub.settings.registrationOverviewPid =
+
+styles.content.loginform.templateFile = EXT:dinner_club/Resources/Private/Templates/Login.html
