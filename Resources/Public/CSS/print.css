@@ -1,0 +1,22 @@
+.container > .row > .col-md-3,
+.container .header,
+.container .footer,
+.btn,
+.typo3-adminPanel {
+	visibility: hidden;
+	display: none;
+}
+
+.news-single .article h3,
+.news-single .article p, {
+	font-size: 10pt;
+}
+
+.news-single .article dl dt {
+	margin-top: 5pt;
+	padding-top: 10pt;
+}
+.news-single .article dl dd {
+	border-bottom: 1px dotted black;
+	padding-bottom: 10pt;
+}
