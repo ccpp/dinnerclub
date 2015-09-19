@@ -45,7 +45,7 @@ class RegistrationController extends ActionController {
 		// TODO clear news page's cache (get from template?)
 		$this->cacheService->clearPageCache(array(1, 3));
 
-		$this->uriBuilder->reset()->setTargetPageUid(8);
+		$this->uriBuilder->reset()->setTargetPageUid($this->settings['startPage']);
 		$this->redirectToUri($this->uriBuilder->uriFor());
 	}
 }
