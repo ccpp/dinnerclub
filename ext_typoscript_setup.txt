@@ -1,0 +1,22 @@
+# ==============================================
+# Persistence object mapping configuration for tx_news
+# ==============================================
+config.tx_extbase.persistence.classes {
+	GeorgRinger\News\Domain\Model\News {
+		subclasses {
+			60 = CP\DinnerClub\Domain\Model\DinnerClubEvent
+		}
+	}
+
+	CP\DinnerClub\Domain\Model\DinnerClubEvent {
+		mapping {
+			recordType = 60
+			tableName = tx_news_domain_model_news
+			columns {
+				tx_dinnerclub_cook.mapOnProperty = cook
+				tx_dinnerclub_contactperson.mapOnProperty = contactPerson
+			}
+		}
+	}
+}
+

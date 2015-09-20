@@ -10,3 +10,8 @@ CREATE TABLE tx_dinnerclub_domain_model_registration (
   PRIMARY KEY (`uid`),
   KEY `event` (`event`)
 );
+
+CREATE TABLE tx_news_domain_model_news (
+  `tx_dinnerclub_cook` VARCHAR(64) DEFAULT '' NOT NULL,
+  `tx_dinnerclub_contactperson` VARCHAR(64) DEFAULT '' NOT NULL,
+);
