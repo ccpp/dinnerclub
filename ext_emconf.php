@@ -1,7 +1,7 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Dinner Club',
+	'title' => 'Dinnerclub Innsbruck Reservierungssystem',
 	'description' => '',
 	'category' => 'plugin',
 	'author' => 'Plattner Christian',
@@ -10,14 +10,14 @@ $EM_CONF[$_EXTKEY] = array(
 	'shy' => '',
 	'priority' => '',
 	'module' => '',
-	'state' => 'alpha',
+	'state' => 'beta',
 	'internal' => '',
 	'uploadfolder' => '0',
 	'createDirs' => '',
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.1',
+	'version' => '0.2',
 	'constraints' => array(
 		'depends' => array(
 			'extbase' => '6.0',

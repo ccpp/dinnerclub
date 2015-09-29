@@ -1,5 +1,5 @@
 <?php
-namespace CP\DinnerClub\Domain\Model;
+namespace CP\Dinnerclub\Domain\Model;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use GeorgRinger\News\Domain\Model\News;
 

@@ -3,7 +3,7 @@ defined('TYPO3_MODE') or die();
 
 return array(
 	'ctrl' => array(
-		'title' => 'Dinner Club registration',
+		'title' => 'Dinnerclub registration',
 		'label' => 'name',
 	),
 	'types' => array(

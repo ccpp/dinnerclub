@@ -1,5 +1,5 @@
 <?php
-namespace CP\DinnerClub\ViewHelpers;
+namespace CP\Dinnerclub\ViewHelpers;
 
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use GeorgRinger\News\Domain\Model\News;

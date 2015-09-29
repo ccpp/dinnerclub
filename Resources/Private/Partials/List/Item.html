@@ -1,11 +1,11 @@
 {namespace n=GeorgRinger\News\ViewHelpers}
-{namespace dc=CP\DinnerClub\ViewHelpers}
+{namespace dc=CP\Dinnerclub\ViewHelpers}
 <n:excludeDisplayedNews newsItem="{newsItem}"/>
 
   <f:if condition="{0: iterator.isFirst, 1: settings.templateLayout} == {0: 1, 1: 54}">
     <f:then>
 	<div class="jumbotron text-center">
-	  <p>N&auml;chster Dinner Club:<br>
+	  <p>N&auml;chster Dinnerclub:<br>
 	  <f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" />:</p>
 	  <h2>{newsItem.title}</h2>
 	  <p class="lead">{newsItem.teaser}</p>

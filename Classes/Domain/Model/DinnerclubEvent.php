@@ -1,8 +1,8 @@
 <?php
-namespace CP\DinnerClub\Domain\Model;
+namespace CP\Dinnerclub\Domain\Model;
 use GeorgRinger\News\Domain\Model\News;
 
-class DinnerClubEvent extends News {
+class DinnerclubEvent extends News {
 
 	/**
 	 * This can be either a PersonRepository or a FrontendUserRepository, dependent on the value.

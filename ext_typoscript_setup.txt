@@ -4,11 +4,11 @@
 config.tx_extbase.persistence.classes {
 	GeorgRinger\News\Domain\Model\News {
 		subclasses {
-			60 = CP\DinnerClub\Domain\Model\DinnerClubEvent
+			60 = CP\Dinnerclub\Domain\Model\DinnerclubEvent
 		}
 	}
 
-	CP\DinnerClub\Domain\Model\DinnerClubEvent {
+	CP\Dinnerclub\Domain\Model\DinnerclubEvent {
 		mapping {
 			recordType = 60
 			tableName = tx_news_domain_model_news

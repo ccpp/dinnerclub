@@ -10,10 +10,10 @@ plugin.tx_dinnerclub {
 plugin.tx_news {
 	view {
 		templateRootPaths {
-			40 = EXT:dinner_club/Resources/Private/Templates/
+			40 = EXT:dinnerclub/Resources/Private/Templates/
 		}
 		partialRootPaths {
-			40 = EXT:dinner_club/Resources/Private/Partials/
+			40 = EXT:dinnerclub/Resources/Private/Partials/
 		}
 	}
 	settings {
@@ -38,20 +38,20 @@ lib.mainmenu {
 page = PAGE
 
 page.includeCSS {
-	bootstrap = EXT:dinner_club/Resources/Public/CSS/bootstrap.min.css
-	bootstrap-theme = EXT:dinner_club/Resources/Public/CSS/bootstrap-theme.min.css
-	css-styled-content = EXT:dinner_club/Resources/Public/CSS/css-styled-content.css
-	jumbotron = EXT:dinner_club/Resources/Public/CSS/jumbotron-narrow.css
-	formvalidator = EXT:dinner_club/Resources/Public/CSS/validator.css
-	print = EXT:dinner_club/Resources/Public/CSS/print.css
+	bootstrap = EXT:dinnerclub/Resources/Public/CSS/bootstrap.min.css
+	bootstrap-theme = EXT:dinnerclub/Resources/Public/CSS/bootstrap-theme.min.css
+	css-styled-content = EXT:dinnerclub/Resources/Public/CSS/css-styled-content.css
+	jumbotron = EXT:dinnerclub/Resources/Public/CSS/jumbotron-narrow.css
+	formvalidator = EXT:dinnerclub/Resources/Public/CSS/validator.css
+	print = EXT:dinnerclub/Resources/Public/CSS/print.css
 	print.media = print
 }
 
 page.includeJS {
-	bootstrap = EXT:dinner_club/Resources/Public/JavaScript/bootstrap.min.css
+	bootstrap = EXT:dinnerclub/Resources/Public/JavaScript/bootstrap.min.css
 }
 
-page.shortcutIcon = EXT:dinner_club/Resources/Public/Icons/favicon.ico
+page.shortcutIcon = EXT:dinnerclub/Resources/Public/Icons/favicon.ico
 
 page.cssInline.10 = FILES
 page.cssInline.10 {
@@ -74,7 +74,7 @@ page.cssInline.10 {
 page.10 = FLUIDTEMPLATE
 page.10 {
 	extbase {
-		controllerExtensionName = DinnerClub
+		controllerExtensionName = Dinnerclub
 	}
 	variables {
 		leftContent < styles.content.getLeft
@@ -84,8 +84,8 @@ page.10 {
 		footerContent < styles.content.getBorder
 		footerContent.slide = -1
 	}
-	layoutRootPath = EXT:dinner_club/Resources/Private/Layouts/Page/
-	file = EXT:dinner_club/Resources/Private/Templates/Page/default.html
+	layoutRootPath = EXT:dinnerclub/Resources/Private/Layouts/Page/
+	file = EXT:dinnerclub/Resources/Private/Templates/Page/default.html
 }
 
 

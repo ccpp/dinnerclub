@@ -1,6 +1,6 @@
-	  <f:form pageUid="{settings.dinnerClubRegistrationPid}" extensionName="DinnerClub" controller="Registration" pluginName="piRegistration" objectName="registration" action="confirm" class="form-horizontal">
+	  <f:form pageUid="{settings.dinnerClubRegistrationPid}" extensionName="Dinnerclub" controller="Registration" pluginName="piRegistration" objectName="registration" action="confirm" class="form-horizontal">
 	    <f:form.hidden property="event" value="{newsItem}" />
-	    <h3>Anmeldung zum Dinner Club</h3>
+	    <h3>Anmeldung zum Dinnerclub</h3>
 	    <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" />:</p>
 	    <div class="form-group">
 	      <label for="n-persons" class="col-sm-4">Wie viele?</label>
@@ -28,5 +28,5 @@
 	        </f:link.page>
 	      </div>
 	    </div>
-	    <p class="text-small">Das Dinner Club-Team freut sich auf dich!</p>
+	    <p class="text-small">Das Dinnerclub-Team freut sich auf dich!</p>
 	  </f:form>

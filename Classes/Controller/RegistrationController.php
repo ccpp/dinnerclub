@@ -1,14 +1,14 @@
 <?php
-namespace CP\DinnerClub\Controller;
+namespace CP\Dinnerclub\Controller;
 
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use GeorgRinger\News\Domain\Model\News;
-use CP\DinnerClub\Domain\Model\Registration;
+use CP\Dinnerclub\Domain\Model\Registration;
 
 class RegistrationController extends ActionController {
 
 	/**
-	 * @var \CP\DinnerClub\Domain\Repository\RegistrationRepository
+	 * @var \CP\Dinnerclub\Domain\Repository\RegistrationRepository
 	 * @inject
 	 */
 	protected $registrationRepository;
@@ -20,7 +20,7 @@ class RegistrationController extends ActionController {
 	protected $cacheService;
 
 	/**
-	 * @param \CP\DinnerClub\Domain\Model\Registration $registration
+	 * @param \CP\Dinnerclub\Domain\Model\Registration $registration
 	 */
 	public function confirmAction(Registration $registration) {
 		$this->view->assign('event', $registration->event);
@@ -28,7 +28,7 @@ class RegistrationController extends ActionController {
 	}
 
 	/**
-	 * @param \CP\DinnerClub\Domain\Model\Registration $registration
+	 * @param \CP\Dinnerclub\Domain\Model\Registration $registration
 	 */
 	public function registerAction(Registration $registration) {
 		$registration->setPid($registration->event->getPid());
