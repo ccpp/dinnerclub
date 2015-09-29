@@ -1,7 +1,6 @@
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 15px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -41,8 +40,8 @@ body {
   margin: 30px 0;
 }
 .container {
-  background-color: white;
-  border-radius: 6px;
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 12px;
   padding: 15px;
 }
 
@@ -51,6 +50,8 @@ body {
   /* text-align: center; */
   border-bottom: 1px solid #e5e5e5;
   padding: 15px;
+  /* border: 1px solid black !important; */
+  background-color: white;
 }
 .jumbotron .btn {
   padding: 14px 24px;
