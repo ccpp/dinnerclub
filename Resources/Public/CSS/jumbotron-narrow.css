@@ -57,6 +57,11 @@ body {
   padding: 14px 24px;
   font-size: 21px;
 }
+.jumbotron p {
+  /* font-size: 13pt; */
+  font-size: inherit;
+
+}
 
 /* Supporting marketing content */
 .marketing {

@@ -6,9 +6,10 @@
     <f:then>
 	<div class="jumbotron text-center">
 	  <p>N&auml;chster Dinnerclub:<br>
-	  <f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" />:</p>
+	  <f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" /></p>
 	  <h2>{newsItem.title}</h2>
-	  <p class="lead">{newsItem.teaser}</p>
+	  <p class="lead">{newsItem.teaser -> f:format.nl2br()}</p>
+	  <p>{newsItem.bodytext -> f:format.html()}</p>
 	  <p>
 	  <n:link settings="{settings}" class="btn btn-lg btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 	  Anmelden<br><span class="small">bisher: {dc:countRegistrations(newsItem: newsItem)}</span>
@@ -23,8 +24,12 @@
     </f:then>
     <f:else>
 	<div class="jumbotron">
-	  <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" />: {newsItem.title}</p>
-	  <p class="lead">{newsItem.teaser}</p>
+	  <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" /></p>
+	  <h3>{newsItem.title}</h3>
+	  <p class="lead">{newsItem.teaser -> f:format.nl2br()}</p>
+	  <f:if condition="{settings.templateLayout == 54}">
+	  <p>{newsItem.bodytext -> f:format.html()}</p>
+	  </f:if>
 	  <p class="pull-right">
 	  <n:link settings="{settings}" class="btn-sm btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Anmelden</n:link>
 	  <f:security.ifAuthenticated>
