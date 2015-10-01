@@ -7,3 +7,14 @@
 .csc-default {
 	border-radius: 6px;
 }
+
+li.csc-uploads-element {
+	/* white-space: nowrap; */
+}
+ul.csc-uploads img {
+	/* float: none !important; */
+}
+ul.csc-uploads span.csc-uploads-fileName {
+	/* display: inline; */
+	padding-left: 2.2em;
+}
