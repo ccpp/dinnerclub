@@ -15,7 +15,10 @@ class CountRegistrationsViewHelper extends AbstractViewHelper {
 	/**
 	 * @param GeorgRinger\News\Domain\Model\News item
 	 */
-	public function render(News $newsItem) {
+	public function render(News $newsItem = null) {
+		if (!$newsItem) {
+			$newsItem = $this->renderChildren();
+		}
 		$sum = 0;
 		foreach ($this->registrationRepository->findByEvent($newsItem) as $registration) {
 			$sum += $registration->count;

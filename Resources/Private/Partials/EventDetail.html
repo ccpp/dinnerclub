@@ -11,7 +11,7 @@
 <f:if condition="{showRegistrations}">
 <f:security.ifAuthenticated>
 <f:alias map="{registrations: '{newsItem -> dc:getRegistrations()}'}">
-	<p>Tischanmeldungen: {registrations -> f:count()}</p>
+	<p>{registrations -> f:count()} Tischanmeldungen: f&uuml;r {newsItem -> dc:countRegistrations()} Personen</p>
 	<dl>
 	<f:for each="{registrations}" as="registration">
 		<dt>{registration.name}:</dt>
