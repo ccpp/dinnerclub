@@ -60,10 +60,12 @@ page.cssInline.10 {
 	}
 	renderObj = TEXT
 	renderObj {
-		stdWrap.data = file:current:publicUrl
-		stdWrap.wrap (
+		typolink.parameter.data = file:current:publicUrl
+		typolink.returnLast = url
+
+		wrap (
 			body {
-				background: url(/dinnerclub/|);
+				background: url(|);
 				background-size: 100%;
 			}
 		)
