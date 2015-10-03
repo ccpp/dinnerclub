@@ -4,11 +4,14 @@
 	    <p><f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:month.{newsItem.datetime -> f:format.date(format: 'm')}" />:</p>
 	    <h3>{newsItem.title}</h3>
 
+	    <p class="lead">{newsItem.teaser -> f:format.nl2br()}</p>
+
 <f:comment>if past:
 	    <p>Termin bereits vergangen</p>
 </f:comment>
 
 <f:if condition="{showRegistrations}">
+<f:then>
 <f:security.ifAuthenticated>
 <f:alias map="{registrations: '{newsItem -> dc:getRegistrations()}'}">
 	<p>{registrations -> f:count()} Tischanmeldungen: f&uuml;r {newsItem -> dc:countRegistrations()} Personen</p>
@@ -21,6 +24,10 @@
 	<a class="btn btn-default" href="#" onclick="window.print();">Drucken</a>
 </f:alias>
 </f:security.ifAuthenticated>
+</f:then>
+<f:else>
+	    <p>{newsItem.bodytext -> f:format.html()}</p>
+</f:else>
 </f:if>
 
 <f:link.page class="btn btn-default" pageUid="{settings.backPid}">
