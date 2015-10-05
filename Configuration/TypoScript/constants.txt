@@ -2,9 +2,13 @@
 plugin.tx_dinnerclub.settings.startPage =
 # cat=plugin.tx_dinnerclub//a; type=int+; label=Detail (and registration form) page ID
 plugin.tx_dinnerclub.settings.detailPid =
-# cat=plugin.tx_dinnerclub//b; type=int+; label=Registration page ID
+# cat=plugin.tx_dinnerclub//b; type=int+; label=Registration form page ID
+plugin.tx_dinnerclub.settings.registrationFormPid =
+# cat=plugin.tx_dinnerclub//b; type=int+; label=Page ID of registration form submission
 plugin.tx_dinnerclub.settings.registrationPid =
 # cat=plugin.tx_dinnerclub//b; type=int+; label=Page with registration details
 plugin.tx_dinnerclub.settings.registrationOverviewPid =
+# cat=plugin.tx_dinnerclub//b; type=int+; label=Page with registration modification form
+plugin.tx_dinnerclub.settings.registrationModificationPid =
 
 styles.content.loginform.templateFile = EXT:dinnerclub/Resources/Private/Templates/Login.html

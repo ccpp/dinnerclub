@@ -1,0 +1,62 @@
+<script type="text/javascript">
+function updateRegistration(radio) {
+  var form = document.forms['registrationModificationForm'];
+  switch(radio.value) {
+  case 'unregister':
+    form.elements['n-persons'].disabled = true;
+    form.elements['submit'].value = 'Abmelden';
+    break;
+  case 'newCount':
+    form.elements['n-persons'].disabled = false;
+    form.elements['submit'].value = 'Anmelden';
+    break;
+  }
+};
+</script>
+
+	  <f:form name="registrationModificationForm" pageUid="{settings.dinnerClubRegistrationPid}" extensionName="Dinnerclub" controller="Registration" pluginName="piRegistration" objectName="registration" action="register" class="form-horizontal">
+	    <f:form.hidden property="event" value="{newsItem}" />
+	    <h3>Anmeldung zum Dinnerclub</h3>
+	    <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" /></p>
+	    <div class="form-group">
+	      <label for="n-persons-original" class="col-sm-4">Wie viele waren angemeldet?</label>
+	      <div class="col-sm-8">
+		<f:form.textfield type="number" additionalAttributes="{min: 1 step:1}" required="required" class="form-control" id="n-persons-original" property="originalCount" value="2" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="name" class="col-sm-4">Auf welchen Namen?</label>
+	      <div class="col-sm-8">
+		<f:form.textfield type="text" property="name" class="form-control" id="name" placeholder="Name" required="required" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <div class="col-sm-4"></div>
+	      <div class="col-sm-8">
+		<label for="modification-unregister">
+		  <f:form.radio id="modification-unregister" name="modification" value="unregister" onclick="updateRegistration(this);" checked="checked" />
+		  Abmelden
+		</label>
+		<br />
+		<label for="modification-newcount">
+		  <f:form.radio id="modification-newcount" name="modification" value="newCount" onclick="updateRegistration(this);" />
+		  Neue Besucherzahl
+		</label>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="n-persons" class="col-sm-4">Wie viele?</label>
+	      <div class="col-sm-8">
+		<f:form.textfield type="number" additionalAttributes="{step:1}" class="form-control" id="n-persons" property="count" value="0" disabled="disabled" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <div class="col-sm-12 text-right">
+		<f:form.submit id="submit" class="btn btn-primary" additionalAttributes="{role: 'button'}" value="Abmelden" />
+	        <f:link.page class="btn btn-default" pageUid="{settings.backPid}">
+		  <f:translate key="back-link" />
+	        </f:link.page>
+	      </div>
+	    </div>
+	    <p class="text-small">Das Dinnerclub-Team freut sich auf dich!</p>
+	  </f:form>

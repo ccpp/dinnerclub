@@ -18,7 +18,10 @@
 	<dl>
 	<f:for each="{registrations}" as="registration">
 		<dt>{registration.name}:</dt>
-		<dd>{registration.count} Personen</dd>
+		<dd>
+			{registration.count} Personen
+			<f:if condition="{registration.originalCount}">(ursprünglich {registration.originalCount})</f:if>
+		</dd>
 	</f:for>
 	</dl>
 	<a class="btn btn-default" href="#" onclick="window.print();">Drucken</a>

@@ -13,8 +13,8 @@
 	  <p>
 	  <div class="text-right" style="position:absolute; right:15px;">
 	    <p>
-	    <n:link settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
-	      Abmelden</span>
+	    <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+	      Ab-/Ummelden
 	    </n:link>
 	    </p>
 	    <p>
@@ -40,7 +40,12 @@
 	  <p>{newsItem.bodytext -> f:format.html()}</p>
 	  </f:if>
 	  <p class="pull-right">
-	  <n:link settings="{settings}" class="btn-sm btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Anmelden</n:link>
+	  <n:link configuration="{parameter: settings.dinnerClubRegistrationFormPid}" settings="{settings}" class="btn-sm btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Anmelden</n:link>
+	  &nbsp;
+	  <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+	    Abmelden
+	  </n:link>
+	  &nbsp;
 	  <f:security.ifAuthenticated>
 	    <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 	    Anmeldungen

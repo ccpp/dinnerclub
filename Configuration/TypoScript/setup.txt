@@ -1,9 +1,11 @@
 plugin.tx_dinnerclub {
 	settings {
 		startPage = {$plugin.tx_dinnerclub.settings.startPage}
+		dinnerClubRegistrationFormPid = {$plugin.tx_dinnerclub.settings.registrationFormPid}
 		defaultDetailPid = {$plugin.tx_dinnerclub.settings.detailPid}
 		dinnerClubRegistrationPid = {$plugin.tx_dinnerclub.settings.registrationPid}
 		dinnerClubRegistrationOverviewPid = {$plugin.tx_dinnerclub.settings.registrationOverviewPid}
+		dinnerClubRegistrationModificationPid = {$plugin.tx_dinnerclub.settings.registrationModificationPid}
 	}
 }
 
@@ -18,8 +20,10 @@ plugin.tx_news {
 	}
 	settings {
 		defaultDetailPid = {$plugin.tx_dinnerclub.settings.detailPid}
+		dinnerClubRegistrationFormPid = {$plugin.tx_dinnerclub.settings.registrationFormPid}
 		dinnerClubRegistrationPid = {$plugin.tx_dinnerclub.settings.registrationPid}
 		dinnerClubRegistrationOverviewPid = {$plugin.tx_dinnerclub.settings.registrationOverviewPid}
+		dinnerClubRegistrationModificationPid = {$plugin.tx_dinnerclub.settings.registrationModificationPid}
 	}
 }
 

@@ -21,6 +21,7 @@ class CountRegistrationsViewHelper extends AbstractViewHelper {
 		}
 		$sum = 0;
 		foreach ($this->registrationRepository->findByEvent($newsItem) as $registration) {
+			$sum -= $registration->originalCount;
 			$sum += $registration->count;
 		}
 		return $sum;

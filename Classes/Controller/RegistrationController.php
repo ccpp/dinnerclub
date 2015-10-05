@@ -29,8 +29,9 @@ class RegistrationController extends ActionController {
 
 	/**
 	 * @param \CP\Dinnerclub\Domain\Model\Registration $registration
+	 * @param \string $modification
 	 */
-	public function registerAction(Registration $registration) {
+	public function registerAction(Registration $registration, $modification = null) {
 		$registration->setPid($registration->event->getPid());
 		$this->registrationRepository->add($registration);
 

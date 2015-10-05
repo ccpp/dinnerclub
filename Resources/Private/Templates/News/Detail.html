@@ -7,10 +7,10 @@
 <f:case value="55"><f:comment>Registration</f:comment>
   <f:if condition="{newsItem -> dc:registrationAllowed()}">
     <f:then>
-      <f:render partial="RegistrationForm" arguments="{newsItem: newsItem}" />
+      <f:render partial="Registration/RegistrationForm" arguments="{newsItem: newsItem}" />
     </f:then>
     <f:else>
-    <f:render partial="EventDetail" arguments="{newsItem: newsItem}" />
+      <f:render partial="EventDetail" arguments="{newsItem: newsItem}" />
     </f:else>
   </f:if>
 </f:case>
@@ -19,6 +19,16 @@
 </f:case>
 <f:case value="57"><f:comment>Detail mit Anmeldungen</f:comment>
   <f:render partial="EventDetail" arguments="{newsItem: newsItem, showRegistrations: 1}" />
+</f:case>
+<f:case value="58"><f:comment>Ab-/Ummeldung</f:comment>
+  <f:if condition="{newsItem -> dc:registrationAllowed()}">
+    <f:then>
+      <f:render partial="Registration/ModificationForm" arguments="{newsItem: newsItem}" />
+    </f:then>
+    <f:else>
+      <f:render partial="EventDetail" arguments="{newsItem: newsItem}" />
+    </f:else>
+  </f:if>
 </f:case>
 <f:case value=""><f:comment>Detail mit Anmeldungen</f:comment>
   No news template chosen

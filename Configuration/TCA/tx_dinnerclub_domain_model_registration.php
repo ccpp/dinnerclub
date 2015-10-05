@@ -8,7 +8,7 @@ return array(
 	),
 	'types' => array(
 		'0' => array(
-			'showitem' => 'event, name, count'
+			'showitem' => 'event, name, count, original_count'
 		)
 	),
 	'columns' => array(
@@ -29,6 +29,13 @@ return array(
 		),
 		'count' => array(
 			'label' => 'Count',
+			'config' => array(
+				'type' => 'input',
+				'eval' => 'int,required',
+			),
+		),
+		'original_count' => array(
+			'label' => 'Original count',
 			'config' => array(
 				'type' => 'input',
 				'eval' => 'int,required',
