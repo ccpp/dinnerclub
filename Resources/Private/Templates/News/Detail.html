@@ -10,7 +10,7 @@
       <f:render partial="Registration/RegistrationForm" arguments="{newsItem: newsItem}" />
     </f:then>
     <f:else>
-      <f:render partial="EventDetail" arguments="{newsItem: newsItem}" />
+      <f:render partial="EventDetail" arguments="{newsItem: newsItem, triedRegistration: 1}" />
     </f:else>
   </f:if>
 </f:case>
@@ -26,7 +26,7 @@
       <f:render partial="Registration/ModificationForm" arguments="{newsItem: newsItem}" />
     </f:then>
     <f:else>
-      <f:render partial="EventDetail" arguments="{newsItem: newsItem}" />
+      <f:render partial="EventDetail" arguments="{newsItem: newsItem, triedRegistration: 1}" />
     </f:else>
   </f:if>
 </f:case>

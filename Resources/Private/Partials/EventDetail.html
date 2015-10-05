@@ -6,9 +6,10 @@
 
 	    <p class="lead">{newsItem.teaser -> f:format.nl2br()}</p>
 
-<f:comment>if past:
-	    <p>Termin bereits vergangen</p>
-</f:comment>
+<f:if condition="{triedRegistration}">
+	    <p>Es tut uns leid, die Anmeldung für den Abend ist bereits abgeschlossen.
+	    Aber schau doch einfach trotzdem vorbei. Meistens gibt es auch ohne Anmeldung noch etwas zu essen!</p>
+</f:if>
 
 <f:if condition="{showRegistrations}">
 <f:then>

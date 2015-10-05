@@ -4,7 +4,7 @@ namespace CP\Dinnerclub\ViewHelpers;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use GeorgRinger\News\Domain\Model\News;
 
-class RegistrationAllowedViewHelper extends AbstractViewHelper {
+class DeadlineViewHelper extends AbstractViewHelper {
 	/**
 	 * @param GeorgRinger\News\Domain\Model\News item
 	 */
@@ -14,9 +14,6 @@ class RegistrationAllowedViewHelper extends AbstractViewHelper {
 		}
 
 		$deadline = clone $newsItem->getDatetime();
-		$deadline->modify("12:00");
-
-		return new \DateTime() < $newsItem->getDatetime();
+		return $deadline->modify("12:00");
 	}
 }
-
