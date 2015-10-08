@@ -16,7 +16,7 @@ class RegistrationAllowedViewHelper extends AbstractViewHelper {
 		$deadline = clone $newsItem->getDatetime();
 		$deadline->modify("12:00");
 
-		return new \DateTime() < $newsItem->getDatetime();
+		return new \DateTime() < $deadline;
 	}
 }
 

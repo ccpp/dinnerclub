@@ -28,6 +28,7 @@
 	  <n:link settings="{settings}" class="btn btn-lg btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 	  Anmelden<br><span class="small">bisher: {dc:countRegistrations(newsItem: newsItem)}</span>
 	  </n:link>
+	  <p><dc:deadlineMessage event="{newsItem}" /></p>
 	  </p>
 	</div>
     </f:then>
@@ -43,7 +44,7 @@
 	  <n:link configuration="{parameter: settings.dinnerClubRegistrationFormPid}" settings="{settings}" class="btn-sm btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Anmelden</n:link>
 	  &nbsp;
 	  <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
-	    Abmelden
+	    Ab-/Ummelden
 	  </n:link>
 	  &nbsp;
 	  <f:security.ifAuthenticated>
@@ -53,6 +54,7 @@
 	  </f:security.ifAuthenticated>
 	  </p>
 	  <span class="clearfix"></span>
+	  <p><dc:deadlineMessage event="{newsItem}" /></p>
 	</div>
     </f:else>
   </f:if>
