@@ -100,3 +100,10 @@ a.dc-logo:hover {
 a.dc-logo > p {
  letter-spacing: 2px;
 }
+
+.jumbotron dt {
+  margin-top: 6pt;
+}
+.lumbotron dd {
+  margin-bottom: 6pt;
+}

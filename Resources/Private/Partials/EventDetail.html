@@ -18,10 +18,18 @@
 	<p>{registrations -> f:count()} Tischanmeldungen: f&uuml;r {newsItem -> dc:countRegistrations()} Personen</p>
 	<dl>
 	<f:for each="{registrations}" as="registration">
-		<dt>{registration.name}:</dt>
+		<dt>
+		<f:if condition="{registration.originalCount}">
+			<f:if condition="{registration.count}">
+			<f:then>UMMELDUNG ({registration.count} statt {registration.originalCount}):</f:then>
+			<f:else>ABMELDUNG (urspr&uuml;nglich {registration.originalCount}):</f:else>
+			</f:if>
+			<br />
+		</f:if>
+		{registration.name}:
+		</dt>
 		<dd>
 			{registration.count} Personen
-			<f:if condition="{registration.originalCount}">(ursprünglich {registration.originalCount})</f:if>
 		</dd>
 	</f:for>
 	</dl>
