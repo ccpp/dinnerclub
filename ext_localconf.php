@@ -1,14 +1,8 @@
 <?php
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
-tx_news.templateLayouts {
-	53 =  --div--,Dinnerclub
-	54 = Startansicht
-	55 = Registration
-	56 = Detailansicht ohne Registration
-	57 = Detailansicht mit Anmeldungen
-	58 = Ab-/Ummeldungsformular
-}
+<INCLUDE_TYPOSCRIPT: source="FiLE:EXT:dinnerclub/Configuration/TSconfig/rte.ts">
+<INCLUDE_TYPOSCRIPT: source="FiLE:EXT:dinnerclub/Configuration/TSconfig/news.ts">
 ');
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
