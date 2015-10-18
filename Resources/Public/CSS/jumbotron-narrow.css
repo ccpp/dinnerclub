@@ -57,6 +57,14 @@ body {
   padding: 14px 24px;
   font-size: 21px;
 }
+.jumbotron .btn-default {
+  background-image: linear-gradient(to bottom, #f7c24e 0px, #fdaa02 100%);
+  /*border-right: 1px solid #b09362;
+  border-bottom: 1px solid #b09362;*/
+}
+.jumbotron .btn-default:hover {
+  background: #f7c24e;
+}
 .jumbotron p {
   /* font-size: 13pt; */
   font-size: inherit;
