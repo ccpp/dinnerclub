@@ -38,8 +38,7 @@
 </f:if>
 
 <f:if condition="{triedRegistration}">
-	    <p>Es tut uns leid, die Anmeldung für den Abend ist bereits abgeschlossen.
-	    Aber schau doch einfach trotzdem vorbei. Meistens gibt es auch ohne Anmeldung noch etwas zu essen!</p>
+<p><dc:deadlineMessage event="{newsItem}" verbose="1" /></p>
 </f:if>
 
 <f:link.page class="btn btn-default" pageUid="{settings.backPid}">
