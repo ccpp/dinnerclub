@@ -40,14 +40,15 @@
 	  <f:if condition="{settings.templateLayout == 54}">
 	  <p>{newsItem.bodytext -> f:format.html()}</p>
 	  </f:if>
-	  <f:if condition="{newsItem -> dc:registrationAllowed()}">
 	  <p class="pull-right">
+	  <f:if condition="{newsItem -> dc:registrationAllowed()}">
 	  <n:link configuration="{parameter: settings.dinnerClubRegistrationFormPid}" settings="{settings}" class="btn-sm btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Anmelden</n:link>
 	  &nbsp;
 	  <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 	    Ab-/Ummelden
 	  </n:link>
 	  &nbsp;
+	  </f:if>
 	  <f:security.ifAuthenticated>
 	    <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 	    Anmeldungen
@@ -55,7 +56,6 @@
 	  </f:security.ifAuthenticated>
 	  </p>
 	  <span class="clearfix"></span>
-	  </f:if>
 	  <p><dc:deadlineMessage event="{newsItem}" /></p>
 	</div>
     </f:else>
