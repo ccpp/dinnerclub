@@ -1,5 +1,12 @@
 plugin.tx_dinnerclub {
 	settings {
+		registrationCountLimit = {$plugin.tx_dinnerclub.settings.registrationCountLimit}
+		afterDeadlineMessageShort = {$plugin.tx_dinnerclub.settings.afterDeadlineMessageShort}
+		afterDeadlineMessageVerbose = {$plugin.tx_dinnerclub.settings.afterDeadlineMessageVerbose}
+		maximumReachedMessageShort = {$plugin.tx_dinnerclub.settings.maximumReachedMessageShort}
+		maximumReachedMessageVerbose = {$plugin.tx_dinnerclub.settings.maximumReachedMessageVerbose}
+		deadlineMessageSameDay = {$plugin.tx_dinnerclub.settings.deadlineMessageSameDay}
+		deadlineMessagedayBefore = {$plugin.tx_dinnerclub.settings.deadlineMessagedayBefore}
 		startPage = {$plugin.tx_dinnerclub.settings.startPage}
 		dinnerClubRegistrationFormPid = {$plugin.tx_dinnerclub.settings.registrationFormPid}
 		defaultDetailPid = {$plugin.tx_dinnerclub.settings.detailPid}

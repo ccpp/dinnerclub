@@ -1,14 +1,29 @@
-# cat=plugin.tx_dinnerclub//1; type=int+; label=Start page
+# cat=plugin.tx_dinnerclub//0; type=int+; label=Registration limit (persons)
+plugin.tx_dinnerclub.settings.registrationCountLimit =
+# cat=plugin.tx_dinnerclub//0; type=string; label=Text for too late registration (short)
+plugin.tx_dinnerclub.settings.afterDeadlineMessageShort =
+# cat=plugin.tx_dinnerclub//0; type=string; label=Text for too late registration (verbose)
+plugin.tx_dinnerclub.settings.afterDeadlineMessageVerbose =
+# cat=plugin.tx_dinnerclub//0; type=string; label=Text for maximum reached (short)
+plugin.tx_dinnerclub.settings.maximumReachedMessageShort =
+# cat=plugin.tx_dinnerclub//0; type=string; label=Text for maximum reached (verbose)
+plugin.tx_dinnerclub.settings.maximumReachedMessageVerbose =
+# cat=plugin.tx_dinnerclub//0; type=string; label=Text for deadline (same day)
+plugin.tx_dinnerclub.settings.deadlineMessageSameDay =
+# cat=plugin.tx_dinnerclub//0; type=string; label=Text for deadline (day before)
+plugin.tx_dinnerclub.settings.deadlineMessagedayBefore =
+
+# cat=plugin.tx_dinnerclub/links/1; type=int+; label=Start page
 plugin.tx_dinnerclub.settings.startPage =
-# cat=plugin.tx_dinnerclub//a; type=int+; label=Detail (and registration form) page ID
+# cat=plugin.tx_dinnerclub/links/a; type=int+; label=Detail (and registration form) page ID
 plugin.tx_dinnerclub.settings.detailPid =
-# cat=plugin.tx_dinnerclub//b; type=int+; label=Registration form page ID
+# cat=plugin.tx_dinnerclub/links/b; type=int+; label=Registration form page ID
 plugin.tx_dinnerclub.settings.registrationFormPid =
-# cat=plugin.tx_dinnerclub//b; type=int+; label=Page ID of registration form submission
+# cat=plugin.tx_dinnerclub/links/b; type=int+; label=Page ID of registration form submission
 plugin.tx_dinnerclub.settings.registrationPid =
-# cat=plugin.tx_dinnerclub//b; type=int+; label=Page with registration details
+# cat=plugin.tx_dinnerclub/links/b; type=int+; label=Page with registration details
 plugin.tx_dinnerclub.settings.registrationOverviewPid =
-# cat=plugin.tx_dinnerclub//b; type=int+; label=Page with registration modification form
+# cat=plugin.tx_dinnerclub/links/b; type=int+; label=Page with registration modification form
 plugin.tx_dinnerclub.settings.registrationModificationPid =
 
 styles.content.loginform.templateFile = EXT:dinnerclub/Resources/Private/Templates/Login.html

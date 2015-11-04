@@ -31,6 +31,12 @@ class DinnerclubEvent extends News {
 	 */
 	protected $frontendUserRepository;
 
+	/**
+	 * @var \CP\Dinnerclub\Domain\Repository\RegistrationRepository
+	 * @inject
+	 */
+	protected $registrationRepository;
+
 
 	/**
 	 * @return \Object
@@ -61,5 +67,18 @@ class DinnerclubEvent extends News {
 			}
 		}
 		return $this->cook;
+	}
+
+	/**
+	 * Counts the number of persons registered for this event
+	 * @return int
+	 */
+	public function countPersons() {
+		$sum = 0;
+		foreach ($this->registrationRepository->findByEvent($this) as $registration) {
+			$sum -= $registration->originalCount;
+			$sum += $registration->count;
+		}
+		return $sum;
 	}
 }

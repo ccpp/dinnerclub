@@ -2,7 +2,7 @@
 namespace CP\Dinnerclub\ViewHelpers;
 
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
-use GeorgRinger\News\Domain\Model\News;
+use CP\Dinnerclub\Domain\Model\DinnerclubEvent;
 
 class RegistrationAllowedViewHelper extends AbstractViewHelper {
 
@@ -13,9 +13,15 @@ class RegistrationAllowedViewHelper extends AbstractViewHelper {
 	protected $registrationRepository;
 
 	/**
-	 * @param GeorgRinger\News\Domain\Model\News item
+	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+	 * @inject
 	 */
-	public function render(News $newsItem = null) {
+	protected $configurationManager;
+
+	/**
+	 * @param CP\Dinnerclub\Domain\Model\DinnerclubEvent $newsItem
+	 */
+	public function render(DinnerclubEvent $newsItem = null) {
 		if (!$newsItem) {
 			$newsItem = $this->renderChildren();
 		}
@@ -27,13 +33,12 @@ class RegistrationAllowedViewHelper extends AbstractViewHelper {
 			return false;
 		}
 
-		$sum = 0;
-		foreach ($this->registrationRepository->findByEvent($newsItem) as $registration) {
-			$sum -= $registration->originalCount;
-			$sum += $registration->count;
-		}
-		if ($sum > 120) {
-			return false;
+		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'Dinnerclub', 'piRegistration');
+
+		if (@$settings['registrationCountLimit']) {
+			if ($newsItem->countPersons() >= $settings['registrationCountLimit']) {
+				return false;
+			}
 		}
 
 		return true;
