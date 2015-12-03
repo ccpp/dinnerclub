@@ -5,10 +5,11 @@ return array(
 	'ctrl' => array(
 		'title' => 'Dinnerclub registration',
 		'label' => 'name',
+		'searchFields' => 'name',
 	),
 	'types' => array(
 		'0' => array(
-			'showitem' => 'event, name, count, original_count'
+			'showitem' => 'event, name, count, vegetarian, original_count'
 		)
 	),
 	'columns' => array(
@@ -32,6 +33,13 @@ return array(
 			'config' => array(
 				'type' => 'input',
 				'eval' => 'int,required',
+			),
+		),
+		'vegetarian' => array(
+			'label' => 'Count Vegetarians',
+			'config' => array(
+				'type' => 'input',
+				'eval' => 'int',
 			),
 		),
 		'original_count' => array(

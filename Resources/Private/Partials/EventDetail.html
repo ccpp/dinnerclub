@@ -11,6 +11,9 @@
 <f:security.ifAuthenticated>
 <f:alias map="{registrations: '{newsItem -> dc:getRegistrations()}'}">
 	<p>{registrations -> f:count()} Tischanmeldungen: f&uuml;r {newsItem -> dc:countRegistrations()} Personen</p>
+	<f:if condition="{newsItem -> dc:countRegistrations(vegetarian: 1)}">
+		{newsItem -> dc:countRegistrations(vegetarian: 1)} vegetarisch
+	</f:if>
 	<dl>
 	<f:for each="{registrations}" as="registration">
 		<dt>
@@ -26,6 +29,7 @@
 		<dd>
 			{registration.count} Personen
 			<f:if condition="{registration.vegetarian}">
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 			&nbsp; &nbsp; {registration.vegetarian} vegetarisch
 			</f:if>
 		</dd>
