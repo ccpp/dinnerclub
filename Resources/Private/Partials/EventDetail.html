@@ -8,7 +8,6 @@
 
 <f:if condition="{showRegistrations}">
 <f:then>
-<f:security.ifAuthenticated>
 <f:alias map="{registrations: '{newsItem -> dc:getRegistrations()}'}">
 	<p>{registrations -> f:count()} Tischanmeldungen: f&uuml;r {newsItem -> dc:countRegistrations()} Personen</p>
 	<f:if condition="{newsItem -> dc:countRegistrations(vegetarian: 1)}">
@@ -37,7 +36,6 @@
 	</dl>
 	<a class="btn btn-default" href="#" onclick="window.print();">Drucken</a>
 </f:alias>
-</f:security.ifAuthenticated>
 </f:then>
 <f:else>
 	    <p>{newsItem.bodytext -> f:format.html()}</p>

@@ -18,11 +18,9 @@
 	    </n:link>
 	    </p>
 	    <p>
-	    <f:security.ifAuthenticated>
 	      <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 		Anmeldungen
 	      </n:link>
-	    </f:security.ifAuthenticated>
 	    </p>
 	  </div>
 	  <n:link settings="{settings}" class="btn btn-lg btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
@@ -49,11 +47,9 @@
 	  </n:link>
 	  &nbsp;
 	  </f:if>
-	  <f:security.ifAuthenticated>
 	    <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 	    Anmeldungen
 	    </n:link>
-	  </f:security.ifAuthenticated>
 	  </p>
 	  <span class="clearfix"></span>
 	  <p><dc:deadlineMessage event="{newsItem}" /></p>
