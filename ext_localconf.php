@@ -9,9 +9,9 @@
 	'CP.Dinnerclub',
 	'piRegistration',
 	array(
-		'Registration' => 'confirm, register'
+		'Registration' => 'register'
 	),
 	array(
-		'Registration' => 'confirm, register'
+		'Registration' => 'register'
 	)
 );

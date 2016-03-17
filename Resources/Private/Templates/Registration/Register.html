@@ -1,0 +1,18 @@
+<h3 class="csc-firstHeader">Bestätigung der Tischreservierung</h3>
+<p><f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:day.{event.datetime -> f:format.date(format: 'w')}" /> {event.datetime -> f:format.date(format: 'j.')} <f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:month.{event.datetime -> f:format.date(format: 'm')}" />: {event.title}</p>
+<f:if condition="{registration.count}">
+  <f:then>
+    <p>
+      Es wurden <strong>{registration.count}</strong> Personen
+      <f:if condition="{registration.vegetarian}">({registration.vegetarian} Vegetarisch)</f:if>
+      auf den Namen <strong>{registration.name}</strong> reserviert.
+      Das Dinnerclub-Team freut sich auf dich!
+    </p>
+    <p class="text-small">Achtung: die Anmeldung ist verbindlich, es werden Tische reserviert. Falls du nicht kommen kannst, bitten wir dich um Absage bzw. Ummeldung.</p>
+  </f:then>
+  <f:else>
+    <p>Schade, dass du nicht kommen kannst. Wir hoffen, dich bald (wieder) begr&uuml;&szlig;en zu k&ouml;nnen!</p>
+  </f:else>
+</f:if>
+<f:link.page class="btn btn-default" pageUid="{settings.startPage}">Zur&uuml;ck zur &Uuml;bersicht</f:link.page>
+
