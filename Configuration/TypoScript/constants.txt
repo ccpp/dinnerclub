@@ -1,0 +1,2 @@
+# cat=plugin.tx_dinnerclub//0; type=string; label=Notification e-mails: Additional notification receiver e-mails
+plugin.tx_dinnerclub.settings.additionalNotificationEmails =

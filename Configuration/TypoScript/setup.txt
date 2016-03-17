@@ -20,6 +20,9 @@ config.tx_extbase.persistence.classes {
 }
 
 plugin.tx_dinnerclub {
+	settings {
+		additionalNotificationEmails = {$plugin.tx_dinnerclub.settings.additionalNotificationEmails}
+	}
 	view {
 		templateRootPaths {
 			30 = EXT:dinnerclub_ext/Resources/Private/Templates/
