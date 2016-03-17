@@ -16,8 +16,8 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['type']['config']['items
 			'internal_type' => 'db',
 			'allowed' => 'fe_users,tx_nnaddress_domain_model_person',
 			'prepend_tname' => true,
-			'size' => 1,
-			'maxitems' => 1,
+			'size' => 5,
+			'maxitems' => 5,
 			'minitems' => 0,
 			'show_thumbs' => true,
 			'wizards' => array(
@@ -35,8 +35,8 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['type']['config']['items
 			'internal_type' => 'db',
 			'allowed' => 'fe_users,tx_nnaddress_domain_model_person',
 			'prepend_tname' => true,
-			'size' => 1,
-			'maxitems' => 1,
+			'size' => 5,
+			'maxitems' => 5,
 			'minitems' => 0,
 			'show_thumbs' => true,
 			'wizards' => array(

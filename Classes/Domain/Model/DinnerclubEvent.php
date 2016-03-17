@@ -1,6 +1,9 @@
 <?php
 namespace CP\Dinnerclub\Domain\Model;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use GeorgRinger\News\Domain\Model\News;
+use NN\NnAddress\Domain\Model\Person;
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 
 class DinnerclubEvent extends News {
 
@@ -10,6 +13,11 @@ class DinnerclubEvent extends News {
 	 * @var \string
 	 */
 	protected $cook;
+
+	/**
+	 * @var \string
+	 */
+	protected $cookEmails;
 
 	/**
 	 * @var \string
@@ -41,32 +49,69 @@ class DinnerclubEvent extends News {
 	/**
 	 * @return \Object
 	 */
-	public function getCook() {
-		return $this->stringToObject($this->cook);
+	public function getCooks() {
+		return $this->stringToObjects('tx_dinnerclub_cook', $this->cook);
 	}
 
 	/**
 	 * @return \Object
 	 */
-	public function getContactPerson() {
-		return $this->stringToObject($this->contactPerson);
+	public function getContactPersons() {
+		return $this->stringToObjects('tx_dinnerclub_contactperson', $this->contactPerson);
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getCookEmails() {
+		return $this->extractEmails($this->getCooks());
+	}
+
+	public function getContactPersonEmails() {
+		return $this->extractEmails($this->getContactPersons());
 	}
 
 
-	protected function stringToObject($ref) {
-		if(preg_match('/^(.*)_([0-9]*)$/', $ref, $matches)) {
-			switch($matches[1]) {
+	protected function stringToObjects($column, $ref) {
+		$rm = GeneralUtility::makeInstance('TYPO3\CMS\Core\Database\RelationHandler');
+		$tca = $GLOBALS['TCA']['tx_news_domain_model_news']['columns'][$column];
+		$rm->start(
+			$this->cook,
+			$tca['config']['allowed'],
+			$tca['config']['MM'],
+			$this->getUid(),
+			'tx_news_domain_model_news',
+			$tca);
+
+		$result = array();
+		foreach ($rm->itemArray as $ref) {
+			switch($ref['table']) {
 			case 'fe_users':
-				$result = $this->frontendUserRepository->findByUid($matches[2]);
-				$result->mails = array(
-					0 => array('email' => $result->getEmail()),
-				);
-				return $result;
+				$result []= $this->frontendUserRepository->findByUid($ref['id']);
+				break;
 			case 'tx_nnaddress_domain_model_person':
-				return $this->personRepository->findByUid($matches[2]);
+				$result []= $this->personRepository->findByUid($ref['id']);
+				break;
 			}
 		}
-		return $this->cook;
+		return $result;
+	}
+
+	protected function extractEmails($persons) {
+		$mails = array();
+		foreach ($persons as $person) {
+			$name = $person->getFirstName() . ' ' . $person->getLastName();
+			if ($person instanceof Person) {
+				foreach ($person->getMails() as $mail) {
+					$mails [$mail->getEmail()] = $name;
+				}
+			} elseif ($person instanceof FrontendUser) {
+				$mails [$person->getEmail()]= $name;
+			} else {
+				throw new \Exception("Invalid person class");
+			}
+		}
+		return $mails;
 	}
 
 	/**

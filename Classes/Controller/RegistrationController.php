@@ -20,6 +20,12 @@ class RegistrationController extends ActionController {
 	protected $cacheService;
 
 	/**
+	 * @var \CP\Dinnerclub\Utility\MailNotificationUtility
+	 * @inject @lazy
+	 */
+	protected $mailNotificationUtility;
+
+	/**
 	 * @param \CP\Dinnerclub\Domain\Model\Registration $registration
 	 */
 	public function confirmAction(Registration $registration) {
@@ -34,6 +40,7 @@ class RegistrationController extends ActionController {
 	public function registerAction(Registration $registration, $modification = null) {
 		$registration->setPid($registration->event->getPid());
 		$this->registrationRepository->add($registration);
+		$this->mailNotificationUtility->notifyRegistration($registration);
 
 		$this->uriBuilder->reset()->setTargetPageUid($this->settings['startPage']);
 		$this->redirectToUri($this->uriBuilder->uriFor());
