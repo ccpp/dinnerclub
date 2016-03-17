@@ -14,5 +14,6 @@ CREATE TABLE tx_dinnerclub_domain_model_registration (
 
 CREATE TABLE tx_news_domain_model_news (
   `tx_dinnerclub_cook` VARCHAR(64) DEFAULT '' NOT NULL,
+  `tx_dinnerclub_cook_emails` tinytext DEFAULT '' NOT NULL,
   `tx_dinnerclub_contactperson` VARCHAR(64) DEFAULT '' NOT NULL,
 );
