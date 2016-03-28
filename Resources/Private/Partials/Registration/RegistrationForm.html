@@ -1,0 +1,35 @@
+	  <f:form pageUid="{settings.dinnerClubRegistrationPid}" extensionName="Dinnerclub" controller="Registration" pluginName="piRegistration" objectName="registration" action="register" class="form-horizontal">
+	    <f:form.hidden property="event" value="{newsItem}" />
+	    <h3>Anmeldung zum Dinnerclub</h3>
+	    <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" /></p>
+	    <div class="form-group">
+	      <label for="n-persons" class="col-sm-4">Wie viele?</label>
+	      <div class="col-sm-8">
+		<f:form.textfield type="number" additionalAttributes="{min: 1 max: 60 step:1}" size="2" maxlength="2" required="required" class="form-control" id="n-persons" property="count" value="2" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="n-vegetarian" class="col-sm-4">Davon Vegetarisch?</label>
+	      <div class="col-sm-8">
+		<f:form.textfield type="number" additionalAttributes="{step:1}" class="form-control" id="n-vegetarian" property="vegetarian" value="" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="name" class="col-sm-4">Wer?</label>
+	      <div class="col-sm-8">
+		<f:form.textfield type="text" property="name" class="form-control" id="name" placeholder="Name" required="required" />
+	      </div>
+	    </div>
+	    <div class="alert alert-warning">
+	      Die Anmeldung ist verbindlich, es werden Tische reserviert. Falls du nicht kommen kannst, bitten wir dich, um Absage bzw. Ummeldung
+	    </div>
+	    <div class="form-group">
+	      <div class="col-sm-12 text-right">
+		<f:form.submit class="btn btn-primary" additionalAttributes="{role: 'button'}" value="Anmelden" />
+	        <f:link.page class="btn btn-default" pageUid="{settings.backPid}">
+		  <f:translate key="back-link" />
+	        </f:link.page>
+	      </div>
+	    </div>
+	    <p class="text-small">Das Dinnerclub-Team freut sich auf dich!</p>
+	  </f:form>

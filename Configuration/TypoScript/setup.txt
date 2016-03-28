@@ -1,0 +1,14 @@
+plugin.tx_dinnerclub {
+	view {
+		templateRootPaths {
+			30 = EXT:dinnerclub_ext/Resources/Private/Templates/
+		}
+	}
+}
+plugin.tx_news {
+	view {
+		partialRootPaths {
+			50 = EXT:dinnerclub_ext/Resources/Private/Partials/
+		}
+	}
+}
