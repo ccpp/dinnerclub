@@ -1,3 +1,9 @@
+config.tx_extbase.objects {
+	CP\Dinnerclub\Controller\RegistrationController {
+		className = CP\DinnerclubExt\Controller\RegistrationController
+	}
+}
+
 plugin.tx_dinnerclub {
 	view {
 		templateRootPaths {
