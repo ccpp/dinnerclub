@@ -2,6 +2,21 @@ config.tx_extbase.objects {
 	CP\Dinnerclub\Controller\RegistrationController {
 		className = CP\DinnerclubExt\Controller\RegistrationController
 	}
+	CP\Dinnerclub\Domain\Model\DinnerclubEvent {
+		className = CP\DinnerclubExt\Domain\Model\DinnerclubEvent
+	}
+}
+
+config.tx_extbase.persistence.classes {
+	CP\DinnerclubExt\Domain\Model\DinnerclubEvent {
+		mapping {
+			recordType = 60
+			tableName = tx_news_domain_model_news
+			columns {
+				tx_dinnerclub_notification_emails.mapOnProperty = notificationEmails
+			}
+		}
+	}
 }
 
 plugin.tx_dinnerclub {
