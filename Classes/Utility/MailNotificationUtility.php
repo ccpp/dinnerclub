@@ -3,35 +3,59 @@ namespace CP\DinnerclubExt\Utility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use CP\Dinnerclub\Domain\Model\Registration;
+use CP\DinnerclubExt\Domain\Model\DinnerclubEvent;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyObjectStorage;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 class MailNotificationUtility {
+
+	/**
+	 * @var TYPO3\CMS\Extbase\Object\ObjectManagerInterface
+	 * @inject @lazy
+	 */
+	protected $objectManager;
+
 	/**
 	 * @param \CP\Dinnerclub\Domain\Model\Registration $registration
+	 * @param array
 	 */
-	public function notifyRegistration($registration, $additionalRecipients = array()) {
+	public function notifyRegistration(Registration $registration, $additionalRecipients = array()) {
 		$event = $registration->event;
 
 		$recipients = array_merge(
-			array_flip($event->getNotificationEmails()),
+			$event->getNotificationEmails(),
 			$event->getCookEmails(),
 			$event->getContactPersonEmails(),
-			array_flip((array)$additionalRecipients));
+			$additionalRecipients);
 
-		$this->sendMail($recipients);
+		$this->sendMail(
+			array_merge($event->getNotificationEmails(), $event->getCookEmails()),
+			array_merge($event->getContactPersonEmails(), $additionalRecipients),
+			$event, $registration);
 	}
 
-	protected function sendMail($recipients) {
-		var_dump('sending to:', $recipients);
+	protected function sendMail($to, $cc, DinnerclubEvent $event, Registration $registration) {
 		$mail = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Mail\\MailMessage');
 		$mail->setFrom('dinnerclub@' . GeneralUtility::getHostname(false));
-		$mail->setTo($recipients);
+		$mail->setTo($to);
+		$mail->setCC($cc);
 		$mail->setSubject("Dinnerclub report");
-		$mail->setBody("test");
-		var_dump('sent: ', $mail->send());
-		var_dump('is sent:', $mail->isSent());
-		var_dump('failed: ' , $mail->getFailedRecipients());
-		die();
+
+		$emailView = $this->objectManager->get("TYPO3\\CMS\\Fluid\\View\\StandaloneView");
+		$emailView->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName('EXT:dinnerclub_ext/Resources/Private/Templates/Mail/RegistrationNotification.txt'));
+		$emailView->assignMultiple(array(
+			'event' => $event,
+			'newRegistration' => $registration,
+			'site' => array(
+				'name' => $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'],
+			),
+		));
+		$body = trim($emailView->render());
+		$mail->setBody($body, "text/plain");
+
+		if (!$mail->send() || !$mail->isSent()) {
+			throw new \Exception("Mail could ont be sent");
+		}
 	}
 }
 
