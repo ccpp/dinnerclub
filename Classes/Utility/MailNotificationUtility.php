@@ -1,11 +1,14 @@
 <?php
 namespace CP\DinnerclubExt\Utility;
 
+use DateTime;
+use DateInterval;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use CP\Dinnerclub\Domain\Model\Registration;
 use CP\DinnerclubExt\Domain\Model\DinnerclubEvent;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyObjectStorage;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use GeorgRinger\News\Domain\Repository\NewsRepository;
 
 class MailNotificationUtility {
 
@@ -16,11 +19,36 @@ class MailNotificationUtility {
 	protected $objectManager;
 
 	/**
+	 * @var GeorgRinger\News\Domain\Repository\NewsRepository
+	 * @inject @lazy
+	 */
+	protected $newsRepository;
+
+	/**
 	 * @param \CP\Dinnerclub\Domain\Model\Registration $registration
 	 * @param array
 	 */
 	public function notifyRegistration(Registration $registration, $additionalRecipients = array()) {
 		$event = $registration->event;
+
+		if (!$event->getDatetime()) {
+			return;
+		}
+		$now = new DateTime;
+		$lastNotificationDate = clone $event->getDatetime();
+		$lastNotificationDate->modify("12:00");
+		$firstNotification = clone $lastNotificationDate;
+		$firstNotification->sub(new DateInterval("P2D"));
+
+		if ($now < $firstNotification) {
+			return;
+		}
+		if ($event->lastNotification) {
+			$diff = $event->lastNotification->diff($now);
+			if ($diff->days*24 + $diff->h < 12) {
+				return;
+			}
+		}
 
 		$recipients = array_merge(
 			$event->getNotificationEmails(),
@@ -32,6 +60,9 @@ class MailNotificationUtility {
 			array_merge($event->getNotificationEmails(), $event->getCookEmails()),
 			array_merge($event->getContactPersonEmails(), $additionalRecipients),
 			$event, $registration);
+
+		$event->lastNotification = $now;
+		$this->newsRepository->update($event);
 	}
 
 	protected function sendMail($to, $cc, DinnerclubEvent $event, Registration $registration) {

@@ -14,6 +14,7 @@ config.tx_extbase.persistence.classes {
 			tableName = tx_news_domain_model_news
 			columns {
 				tx_dinnerclub_notification_emails.mapOnProperty = notificationEmails
+				tx_dinnerclub_notification_last_notification.mapOnProperty = lastNotification
 			}
 		}
 	}

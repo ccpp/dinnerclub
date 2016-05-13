@@ -14,6 +14,11 @@ class DinnerclubEvent extends \CP\Dinnerclub\Domain\Model\DinnerclubEvent {
 	protected $notificationEmails;
 
 	/**
+	 * @var DateTime
+	 */
+	public $lastNotification;
+
+	/**
 	 * @return array
 	 */
 	public function getNotificationEmails() {
