@@ -1,0 +1,64 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+{namespace dc=CP\Dinnerclub\ViewHelpers}
+<n:excludeDisplayedNews newsItem="{newsItem}"/>
+
+  <f:if condition="{0: iterator.isFirst, 1: settings.templateLayout} == {0: 1, 1: 54}">
+    <f:then>
+	<div class="jumbotron text-center" style="position:relative;">
+	  <p>N&auml;chster Dinnerclub:<br>
+	  <f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" /> {newsItem.datetime -> f:format.date(format: 'H:i')}</p>
+	  <h2>{newsItem.title}</h2>
+	  <p class="lead">{newsItem.teaser -> f:format.nl2br()}</p>
+	  <p>{newsItem.bodytext -> f:format.html()}</p>
+	  <p>
+	  <div class="text-right">
+	    <p>
+	    <n:link settings="{settings}" class="btn btn-lg btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+	      Anmelden
+	    </n:link>
+	    <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+	      Ab-/Ummelden
+	    </n:link>
+	    </p>
+	    <p>
+	    <f:security.ifAuthenticated>
+	      <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+		Anmeldungen
+	      </n:link>
+	    </f:security.ifAuthenticated>
+	    </p>
+	  </div>
+	  <span class="small">bisher: {dc:countRegistrations(newsItem: newsItem)}</span>
+	  <p><dc:deadlineMessage event="{newsItem}" /></p>
+	  </p>
+	</div>
+    </f:then>
+    <f:else>
+	<div class="jumbotron">
+	  <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" /></p>
+	  <h3><n:link settings="{settings}" newsItem="{newsItem}">{newsItem.title}</n:link></h3>
+	  <p class="lead">{newsItem.teaser -> f:format.nl2br()}</p>
+	  <f:if condition="{settings.templateLayout == 54}">
+	  <p>{newsItem.bodytext -> f:format.html()}</p>
+	  </f:if>
+	  <p class="pull-right">
+	  <f:if condition="{newsItem -> dc:registrationAllowed()}">
+	  <n:link configuration="{parameter: settings.dinnerClubRegistrationFormPid}" settings="{settings}" class="btn-sm btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Anmelden</n:link>
+	  &nbsp;
+	  <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+	    Ab-/Ummelden
+	  </n:link>
+	  &nbsp;
+	  </f:if>
+	  <f:security.ifAuthenticated>
+	    <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+	    Anmeldungen
+	    </n:link>
+	  </f:security.ifAuthenticated>
+	  </p>
+	  <span class="clearfix"></span>
+	  <p><dc:deadlineMessage event="{newsItem}" /></p>
+	</div>
+    </f:else>
+  </f:if>
+
