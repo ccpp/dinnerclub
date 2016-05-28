@@ -28,7 +28,7 @@ class MailNotificationUtility {
 	 * @param \CP\Dinnerclub\Domain\Model\Registration $registration
 	 * @param array
 	 */
-	public function notifyRegistration(Registration $registration, $additionalRecipients = array()) {
+	public function notifyRegistration(Registration $registration, $settings = array()) {
 		$event = $registration->event;
 
 		if (!$event->getDatetime()) {
@@ -50,27 +50,23 @@ class MailNotificationUtility {
 			}
 		}
 
-		$recipients = array_merge(
-			$event->getNotificationEmails(),
-			$event->getCookEmails(),
-			$event->getContactPersonEmails(),
-			$additionalRecipients);
-
 		$this->sendMail(
 			array_merge($event->getNotificationEmails(), $event->getCookEmails()),
-			array_merge($event->getContactPersonEmails(), $additionalRecipients),
-			$event, $registration);
+			array_merge($event->getContactPersonEmails(), $settings['additionalNotificationEmails']),
+			$event, $registration, $settings['replyToEmail'], $settings['returnPathEmail']);
 
 		$event->lastNotification = $now;
 		$this->newsRepository->update($event);
 	}
 
-	protected function sendMail($to, $cc, DinnerclubEvent $event, Registration $registration) {
+	protected function sendMail($to, $cc, DinnerclubEvent $event, Registration $registration, $replyToEmail, $returnPathEmail) {
 		$mail = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Mail\\MailMessage');
 		$mail->setFrom('dinnerclub@' . GeneralUtility::getHostname(false));
 		$mail->setTo($to);
 		$mail->setCC($cc);
-		$mail->setSubject("Dinnerclub report");
+		if ($replyToEmail) $mail->setReplyTo($replyToEmail);
+		if ($returnPathEmail) $mail->setReturnPath($returnPathEmail);
+		$mail->setSubject("Dinnerclub Anmeldungen");
 
 		$emailView = $this->objectManager->get("TYPO3\\CMS\\Fluid\\View\\StandaloneView");
 		$emailView->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName('EXT:dinnerclub_ext/Resources/Private/Templates/Mail/RegistrationNotification.txt'));

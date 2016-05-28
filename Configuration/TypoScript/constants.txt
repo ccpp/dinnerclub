@@ -1,2 +1,6 @@
 # cat=plugin.tx_dinnerclub//0; type=string; label=Notification e-mails: Additional notification receiver e-mails
 plugin.tx_dinnerclub.settings.additionalNotificationEmails =
+# cat=plugin.tx_dinnerclub//1; type=string; label=Reply-To email for sent messages
+plugin.tx_dinnerclub.settings.replyToEmail = dinnerclub@caritas-integrationshaus.at
+# cat=plugin.tx_dinnerclub//1; type=string; label=Return-path email (set only if mails are identified as SPAM!)
+plugin.tx_dinnerclub.settings.returnPathEmail =
