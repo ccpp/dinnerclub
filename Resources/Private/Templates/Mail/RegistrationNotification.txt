@@ -17,5 +17,4 @@ für euren bevorstehenden Dinnerclub-Abend am {event.datetime -> f:format.date(f
 Für die aktualisierte Liste meldet euch bitte unter http://www.caritas-integrationshaus.at/dinnerclub an.
 
 Herzliche Grüße
-
 Das Dinnerclub-Team
