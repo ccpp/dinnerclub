@@ -57,6 +57,10 @@ class DinnerclubEvent extends \CP\Dinnerclub\Domain\Model\DinnerclubEvent {
 	 * @return array
 	 */
 	protected function extractEmails($person) {
+		if (!is_object($person)) {
+			return;
+		}
+
 		$mails = array();
 
 		$name = $person->getFirstName() . ' ' . $person->getLastName();
