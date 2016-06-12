@@ -52,7 +52,7 @@ class MailNotificationUtility {
 
 		$this->sendMail(
 			array_merge($event->getNotificationEmails(), $event->getCookEmails()),
-			array_merge($event->getContactPersonEmails(), $settings['additionalNotificationEmails']),
+			array_merge($event->getContactPersonEmails(), GeneralUtility::trimExplode(",", $settings['additionalNotificationEmails'], true)),
 			$settings['emailSubject'],
 			$event, $registration, $settings['replyToEmail'], $settings['returnPathEmail']);
 

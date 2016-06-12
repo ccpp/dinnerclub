@@ -29,7 +29,7 @@ class RegistrationController extends \CP\Dinnerclub\Controller\RegistrationContr
 		$this->registrationRepository->add($registration);
 		parent::confirmAction($registration);
 		$this->persistenceManager->persistAll();
-		$this->mailNotificationUtility->notifyRegistration($registration, GeneralUtility::trimExplode(",", $this->settings, true));
+		$this->mailNotificationUtility->notifyRegistration($registration, $this->settings);
 	}
 
 }
