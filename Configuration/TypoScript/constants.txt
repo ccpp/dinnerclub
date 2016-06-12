@@ -2,6 +2,8 @@
 plugin.tx_dinnerclub.settings.additionalNotificationEmails =
 # cat=plugin.tx_dinnerclub//1; type=string; label=Subject of status emails
 plugin.tx_dinnerclub.settings.emailSubject = Dinnerclub Anmeldestatus
+# cat=plugin.tx_dinnerclub//1; type=int+; label=Send notification email every X hours
+plugin.tx_dinnerclub.settings.emailFrequencyHours = 12
 # cat=plugin.tx_dinnerclub//1; type=string; label=Reply-To email for sent messages
 plugin.tx_dinnerclub.settings.replyToEmail = dinnerclub@caritas-integrationshaus.at
 # cat=plugin.tx_dinnerclub//1; type=string; label=Return-path email (set only if mails are identified as SPAM!)

@@ -43,9 +43,9 @@ class MailNotificationUtility {
 		if ($now < $firstNotification) {
 			return;
 		}
-		if ($event->lastNotification) {
+		if ($event->lastNotification && $settings['emailFrequencyHours']) {
 			$diff = $event->lastNotification->diff($now);
-			if ($diff->days*24 + $diff->h < 12) {
+			if ($diff->days*24 + $diff->h < $settings['emailFrequencyHours']) {
 				return;
 			}
 		}
