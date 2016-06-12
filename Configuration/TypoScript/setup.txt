@@ -23,6 +23,7 @@ config.tx_extbase.persistence.classes {
 plugin.tx_dinnerclub {
 	settings {
 		additionalNotificationEmails = {$plugin.tx_dinnerclub.settings.additionalNotificationEmails}
+		emailSubject = {$plugin.tx_dinnerclub.settings.emailSubject}
 		replyToEmail = {$plugin.tx_dinnerclub.settings.replyToEmail}
 		returnPathEmail = {$plugin.tx_dinnerclub.settings.returnPathEmail}
 	}

@@ -53,20 +53,30 @@ class MailNotificationUtility {
 		$this->sendMail(
 			array_merge($event->getNotificationEmails(), $event->getCookEmails()),
 			array_merge($event->getContactPersonEmails(), $settings['additionalNotificationEmails']),
+			$settings['emailSubject'],
 			$event, $registration, $settings['replyToEmail'], $settings['returnPathEmail']);
 
 		$event->lastNotification = $now;
 		$this->newsRepository->update($event);
 	}
 
-	protected function sendMail($to, $cc, DinnerclubEvent $event, Registration $registration, $replyToEmail, $returnPathEmail) {
+	/**
+	 * @param array to
+	 * @param array cc
+	 * @param string subject
+	 * @param CP\DinnerclubExt\Domain\Model\DinnerclubEvent event
+	 * @param CP\Dinnerclub\Domain\Model\Registration registration
+	 * @param string replyToEmail
+	 * @param string returnPathEmail
+	 */
+	protected function sendMail($to, $cc, $subject, DinnerclubEvent $event, Registration $registration, $replyToEmail, $returnPathEmail) {
 		$mail = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Mail\\MailMessage');
 		$mail->setFrom('dinnerclub@' . GeneralUtility::getHostname(false));
 		$mail->setTo($to);
 		$mail->setCC($cc);
 		if ($replyToEmail) $mail->setReplyTo($replyToEmail);
 		if ($returnPathEmail) $mail->setReturnPath($returnPathEmail);
-		$mail->setSubject("Dinnerclub Anmeldungen");
+		$mail->setSubject($subject);
 
 		$emailView = $this->objectManager->get("TYPO3\\CMS\\Fluid\\View\\StandaloneView");
 		$emailView->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName('EXT:dinnerclub_ext/Resources/Private/Templates/Mail/RegistrationNotification.txt'));
