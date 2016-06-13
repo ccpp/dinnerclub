@@ -1,0 +1,55 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+{namespace dc=CP\Dinnerclub\ViewHelpers}
+{namespace dcx=CP\DinnerclubExt\ViewHelpers}
+
+
+	    <p><f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:month.{newsItem.datetime -> f:format.date(format: 'm')}" />:</p>
+	    <h3>{newsItem.title}</h3>
+
+	    <p class="lead">{newsItem.teaser -> f:format.nl2br()}</p>
+
+<f:if condition="{showRegistrations}">
+<f:then>
+<dcx:ifAuthenticated news="{newsItem}">
+<f:alias map="{registrations: '{newsItem -> dc:getRegistrations()}'}">
+	<p>{registrations -> f:count()} Tischanmeldungen: f&uuml;r {newsItem -> dc:countRegistrations()} Personen</p>
+	<f:if condition="{newsItem -> dc:countRegistrations(vegetarian: 1)}">
+		{newsItem -> dc:countRegistrations(vegetarian: 1)} vegetarisch
+	</f:if>
+	<dl>
+	<f:for each="{registrations}" as="registration">
+		<dt>
+		<f:if condition="{registration.originalCount}">
+			<f:if condition="{registration.count}">
+			<f:then>UMMELDUNG ({registration.count} statt {registration.originalCount}):</f:then>
+			<f:else>ABMELDUNG (urspr&uuml;nglich {registration.originalCount}):</f:else>
+			</f:if>
+			<br />
+		</f:if>
+		{registration.name}:
+		</dt>
+		<dd>
+			{registration.count} Personen
+			<f:if condition="{registration.vegetarian}">
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			&nbsp; &nbsp; {registration.vegetarian} vegetarisch
+			</f:if>
+		</dd>
+	</f:for>
+	</dl>
+	<a class="btn btn-default" href="#" onclick="window.print();">Drucken</a>
+</f:alias>
+</dcx:ifAuthenticated>
+</f:then>
+<f:else>
+	    <p>{newsItem.bodytext -> f:format.html()}</p>
+</f:else>
+</f:if>
+
+<f:if condition="{triedRegistration}">
+<p><dc:deadlineMessage event="{newsItem}" verbose="1" /></p>
+</f:if>
+
+<f:link.page class="btn btn-default" pageUid="{settings.backPid}">
+	<f:translate key="back-link" />
+</f:link.page>

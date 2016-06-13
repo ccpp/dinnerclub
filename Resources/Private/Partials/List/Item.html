@@ -1,5 +1,7 @@
 {namespace n=GeorgRinger\News\ViewHelpers}
 {namespace dc=CP\Dinnerclub\ViewHelpers}
+{namespace dcx=CP\DinnerclubExt\ViewHelpers}
+
 <n:excludeDisplayedNews newsItem="{newsItem}"/>
 
   <f:if condition="{0: iterator.isFirst, 1: settings.templateLayout} == {0: 1, 1: 54}">
@@ -21,11 +23,11 @@
 	    </n:link>
 	    </p>
 	    <p>
-	    <f:security.ifAuthenticated>
+	    <dcx:ifAuthenticated news="{newsItem}">
 	      <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 		Anmeldungen
 	      </n:link>
-	    </f:security.ifAuthenticated>
+	    </dcx:ifAuthenticated>
 	    </p>
 	  </div>
 	  <span class="small">bisher: {dc:countRegistrations(newsItem: newsItem)}</span>
@@ -50,11 +52,11 @@
 	  </n:link>
 	  &nbsp;
 	  </f:if>
-	  <f:security.ifAuthenticated>
+	  <dcx:ifAuthenticated news="{newsItem}">
 	    <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 	    Anmeldungen
 	    </n:link>
-	  </f:security.ifAuthenticated>
+	  </dcx:ifAuthenticated>
 	  </p>
 	  <span class="clearfix"></span>
 	  <p><dc:deadlineMessage event="{newsItem}" /></p>

@@ -25,11 +25,17 @@ class MailNotificationUtility {
 	protected $newsRepository;
 
 	/**
+	 * @var array
+	 */
+	protected $settings;
+
+	/**
 	 * @param \CP\Dinnerclub\Domain\Model\Registration $registration
 	 * @param array
 	 */
 	public function notifyRegistration(Registration $registration, $settings = array()) {
 		$event = $registration->event;
+		$this->settings = $settings;
 
 		if (!$event->getDatetime()) {
 			return;
@@ -81,6 +87,7 @@ class MailNotificationUtility {
 		$emailView = $this->objectManager->get("TYPO3\\CMS\\Fluid\\View\\StandaloneView");
 		$emailView->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName('EXT:dinnerclub_ext/Resources/Private/Templates/Mail/RegistrationNotification.txt'));
 		$emailView->assignMultiple(array(
+			'settings' => $this->settings,
 			'event' => $event,
 			'newRegistration' => $registration,
 			'site' => array(
