@@ -1,5 +1,6 @@
 {namespace n=GeorgRinger\News\ViewHelpers}
 {namespace dc=CP\Dinnerclub\ViewHelpers}
+{namespace dcx=CP\DinnerclubExt\ViewHelpers}
 
 Liebes Dinnerclub-Kochteam,
 
@@ -14,7 +15,8 @@ für euren bevorstehenden Dinnerclub-Abend am {event.datetime -> f:format.date(f
 </f:if> {registration.name}: {registration.count} <f:if condition="{registration.vegetarian}">({registration.vegetarian} vegetarisch)</f:if>
 </f:for>
 
-Für die aktualisierte Liste meldet euch bitte unter http://www.caritas-integrationshaus.at/dinnerclub an.
+Für die aktualisierte Liste klickt bitte diesenLink:
+<f:uri.action absolute="true" action="anonymousLogin" arguments="{event: event, checksum: '{event -> dcx:checksum()}'}" controller="Registration" extensionName="Dinnerclub" noCacheHash="true" />
 
 Herzliche Grüße
 Das Dinnerclub-Team
