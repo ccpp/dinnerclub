@@ -6,13 +6,16 @@
     <f:then>
 	<div class="jumbotron text-center" style="position:relative;">
 	  <p>N&auml;chster Dinnerclub:<br>
-	  <f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" /></p>
+	  <f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" /> {newsItem.datetime -> f:format.date(format: 'H:i')}</p>
 	  <h2>{newsItem.title}</h2>
 	  <p class="lead">{newsItem.teaser -> f:format.nl2br()}</p>
 	  <p>{newsItem.bodytext -> f:format.html()}</p>
 	  <p>
-	  <div class="text-right" style="position:absolute; right:15px;">
+	  <div class="text-right">
 	    <p>
+	    <n:link settings="{settings}" class="btn btn-lg btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
+	      Anmelden
+	    </n:link>
 	    <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 	      Ab-/Ummelden
 	    </n:link>
@@ -25,9 +28,7 @@
 	    </f:security.ifAuthenticated>
 	    </p>
 	  </div>
-	  <n:link settings="{settings}" class="btn btn-lg btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
-	  Anmelden<br><span class="small">bisher: {dc:countRegistrations(newsItem: newsItem)}</span>
-	  </n:link>
+	  <span class="small">bisher: {dc:countRegistrations(newsItem: newsItem)}</span>
 	  <p><dc:deadlineMessage event="{newsItem}" /></p>
 	  </p>
 	</div>

@@ -13,6 +13,12 @@ plugin.tx_dinnerclub {
 		dinnerClubRegistrationPid = {$plugin.tx_dinnerclub.settings.registrationPid}
 		dinnerClubRegistrationOverviewPid = {$plugin.tx_dinnerclub.settings.registrationOverviewPid}
 		dinnerClubRegistrationModificationPid = {$plugin.tx_dinnerclub.settings.registrationModificationPid}
+
+		additionalNotificationEmails = {$plugin.tx_dinnerclub.settings.additionalNotificationEmails}
+		emailSubject = {$plugin.tx_dinnerclub.settings.emailSubject}
+		emailFrequencyHours = {$plugin.tx_dinnerclub.settings.emailFrequencyHours}
+		replyToEmail = {$plugin.tx_dinnerclub.settings.replyToEmail}
+		returnPathEmail = {$plugin.tx_dinnerclub.settings.returnPathEmail}
 	}
 }
 
@@ -102,3 +108,21 @@ page.10 {
 }
 
 
+config.tx_extbase.objects {
+	CP\Dinnerclub\Controller\RegistrationController {
+		className = CP\Dinnerclub\Controller\RegistrationController
+	}
+}
+
+config.tx_extbase.persistence.classes {
+	CP\Dinnerclub\Domain\Model\DinnerclubEvent {
+		mapping {
+			recordType = 60
+			tableName = tx_news_domain_model_news
+			columns {
+				tx_dinnerclub_notification_emails.mapOnProperty = notificationEmails
+				tx_dinnerclub_notification_last_notification.mapOnProperty = lastNotification
+			}
+		}
+	}
+}

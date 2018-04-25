@@ -2,6 +2,7 @@
 namespace CP\Dinnerclub\Controller;
 
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use GeorgRinger\News\Domain\Model\News;
 use CP\Dinnerclub\Domain\Model\Registration;
 
@@ -14,20 +15,31 @@ class RegistrationController extends ActionController {
 	protected $registrationRepository;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Service\CacheService
-	 * @inject
+	 * @var TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+	 * @inject @lazy
 	 */
-	protected $cacheService;
+	protected $persistenceManager;
 
 	/**
+	 * @var \CP\Dinnerclub\Utility\MailNotificationUtility
+	 * @inject @lazy
+	 */
+	protected $mailNotificationUtility;
+
+	/**
+	 * Do not redirect back to startPage, but show confirmation text instead
+	 *
 	 * @param \CP\Dinnerclub\Domain\Model\Registration $registration
 	 * @param \string $modification
 	 */
 	public function registerAction(Registration $registration, $modification = null) {
 		$registration->setPid($registration->event->getPid());
 		$this->registrationRepository->add($registration);
+		$this->persistenceManager->persistAll();
+		$this->mailNotificationUtility->notifyRegistration($registration, $this->settings);
 
 		$this->view->assign('event', $registration->event);
 		$this->view->assign('registration', $registration);
 	}
+
 }

@@ -1,4 +1,5 @@
 <?php
+defined('TYPO3_MODE') or die();
 
 // Add TCA type 60 (Dinnerclub event)
 
@@ -46,4 +47,12 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['type']['config']['items
 			),
 		),
 	),
+	'tx_dinnerclub_notification_emails' => array(
+		'exclude' => 1,
+		'label' => 'Benachrichtigungs-E-Mail(s)',
+		'config' => array(
+			'type' => 'input',
+		),
+	),
 ));
+

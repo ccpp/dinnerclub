@@ -1,0 +1,20 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+{namespace dc=CP\Dinnerclub\ViewHelpers}
+
+Liebes Dinnerclub-Kochteam,
+
+für euren bevorstehenden Dinnerclub-Abend am {event.datetime -> f:format.date(format: 'd.')} <f:translate key="LLL:EXT:news/Resources/Private/Language/locallang.xlf:month.{event.datetime -> f:format.date(format: 'm')}" /> liegen derzeit Anmeldungen für {event -> dc:countRegistrations()} Plätze ({event->dc:countRegistrations(vegetarian: 1)} Vegetarier) vor. Folgende Tischreservierungen sind bisher eingetroffen:
+
+<f:for each="{event -> dc:getRegistrations()}" as="registration">- <f:if condition="{registration.originalCount}">
+  <f:then><f:if condition="{registration.count}">
+    <f:then>UMMELDUNG:</f:then>
+    <f:else>ABMELDUNG:</f:else>
+  </f:if></f:then>
+  <f:else>Anmeldung:</f:else>
+</f:if> {registration.name}: {registration.count} <f:if condition="{registration.vegetarian}">({registration.vegetarian} vegetarisch)</f:if>
+</f:for>
+
+Für die aktualisierte Liste meldet euch bitte unter http://www.caritas-integrationshaus.at/dinnerclub an.
+
+Herzliche Grüße
+Das Dinnerclub-Team
