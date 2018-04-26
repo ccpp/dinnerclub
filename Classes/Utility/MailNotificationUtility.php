@@ -4,6 +4,7 @@ namespace CP\Dinnerclub\Utility;
 use DateTime;
 use DateInterval;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Log\LogManager;
 use CP\Dinnerclub\Domain\Model\Registration;
 use CP\Dinnerclub\Domain\Model\DinnerclubEvent;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyObjectStorage;
@@ -31,7 +32,10 @@ class MailNotificationUtility {
 	public function notifyRegistration(Registration $registration, $settings = array()) {
 		$event = $registration->event;
 
+		$this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger('dinnerclub');
+
 		if (!$event->getDatetime()) {
+			$this->logger->info('Event has no time');
 			return;
 		}
 		$now = new DateTime;
@@ -41,6 +45,7 @@ class MailNotificationUtility {
 		$firstNotification->sub(new DateInterval("P2D"));
 
 		if ($now < $firstNotification) {
+			$this->logger->info('Notification sent recently');
 			return;
 		}
 		if ($event->lastNotification && $settings['emailFrequencyHours']) {
@@ -70,6 +75,8 @@ class MailNotificationUtility {
 	 * @param string returnPathEmail
 	 */
 	protected function sendMail($to, $cc, $subject, DinnerclubEvent $event, Registration $registration, $replyToEmail, $returnPathEmail) {
+		$this->logger->info('Rendering mail with subject "' . $subject . '" to: ' . join(',', $to) . ', cc: ' . join(', ', $cc));
+
 		$mail = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Mail\\MailMessage');
 		$mail->setFrom('dinnerclub@' . GeneralUtility::getHostname(false));
 		$mail->setTo($to);
@@ -90,8 +97,15 @@ class MailNotificationUtility {
 		$body = trim($emailView->render());
 		$mail->setBody($body, "text/plain");
 
-		if (!$mail->send() || !$mail->isSent()) {
-			throw new \Exception("Mail could ont be sent");
+		if (!$mail->send()) {
+			$this->logger->warning('Mail could not be sent');
+		}
+		elseif (!$mail->isSent()) {
+			$this->logger->warning('Mail not marked as sent');
+		}
+
+		if ($mail->getFailedRecipients()) {
+			$this->logger->warning('Failed sending to ' . join(', ', $mail->getFailedRecipients()));
 		}
 	}
 }
