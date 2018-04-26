@@ -20,6 +20,10 @@ class DinnerclubEvent extends News {
 	 */
 	protected $contactPerson;
 
+	/**
+	 * @var \integer
+	 */
+	public $registrationLimit;
 
 	/**
 	 * @var \NN\NnAddress\Domain\Repository\PersonRepository

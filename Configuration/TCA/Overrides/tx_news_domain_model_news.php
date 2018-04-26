@@ -7,7 +7,13 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['ctrl']['typeicons']['60'] = \TYPO3
 $GLOBALS['TCA']['tx_news_domain_model_news']['types'][60] = $GLOBALS['TCA']['tx_news_domain_model_news']['types'][0];
 $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['type']['config']['items'][] = array("Dinnerclub event", 60);
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_news_domain_model_news', 'tx_dinnerclub_cook,tx_dinnerclub_contactperson', '60', 'after:bodytext');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_news_domain_model_news',
+	'tx_dinnerclub_cook,
+	tx_dinnerclub_contactperson,
+	tx_dinnerclub_notification_emails,
+	tx_dinnerclub_registration_limit',
+	'60', 'after:bodytext');
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tx_news_domain_model_news', array(
 	'tx_dinnerclub_cook' => array(
 		'exclude' => 1,
@@ -52,6 +58,16 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['type']['config']['items
 		'label' => 'Benachrichtigungs-E-Mail(s)',
 		'config' => array(
 			'type' => 'input',
+		),
+	),
+	'tx_dinnerclub_registration_limit' => array(
+		'exclude' => 1,
+		'label' => 'Anmeldelimit',
+		'config' => array(
+			'type' => 'input',
+			'eval' => 'int,null',
+			'mode' => 'useOrOverridePlaceholder',
+			'placeholder' => '100',
 		),
 	),
 ));

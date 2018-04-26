@@ -15,6 +15,7 @@ CREATE TABLE tx_dinnerclub_domain_model_registration (
 CREATE TABLE tx_news_domain_model_news (
   `tx_dinnerclub_cook` VARCHAR(64) DEFAULT '' NOT NULL,
   `tx_dinnerclub_contactperson` VARCHAR(64) DEFAULT '' NOT NULL,
+  `tx_dinnerclub_registration_limit` int(11) DEFAULT NULL,
   `tx_dinnerclub_notification_emails` VARCHAR(64) DEFAULT '' NOT NULL,
   `tx_dinnerclub_notification_last_notification` int(11) NOT NULL DEFAULT '0',
 );
