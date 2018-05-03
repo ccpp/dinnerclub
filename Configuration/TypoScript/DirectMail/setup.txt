@@ -1,0 +1,136 @@
+page = PAGE
+page {
+  10 = TEXT
+  10.typolink.parameter = 11
+}
+
+[loginUser = *]
+page {
+  config {
+    disableAllHeaderCode = 0
+    inlineStyle2TempFile = 0
+    removeDefaultCss = 1
+    concatenateCss = 1
+    htmlTag_langKey = de
+    absRefPrefix = {$plugin.tx_directmail_pi1.siteUrl}
+  }
+
+  shortcutIcon >
+
+  includeJS >
+  inlineCSS >
+
+  cssInline.12 = TEXT
+  cssInline.12.value (
+    body { font-family: sans-serif }
+    #footer .csc-frame-rulerBefore {
+      border-top: 1px solid #D4D5D6;
+    }
+    .indent {
+      margin-left: 1em;
+    }
+  )
+
+  bodyTag = <body style="margin: 0 1em; font-family:sans-serif;">
+  6 < styles.content.getLeft
+  6.select.pidInList = this,35
+
+  10 < styles.content.get
+
+  20 < styles.content.getBorder
+  20.select.pidInList = this,35
+  20.wrap = <div id="footer" style="color: #777777;margin: 20px 0;padding: 8px 0;">|</div>
+}
+
+/*
+page1 = PAGE
+page1 {
+  wrap = <table>|</table>`
+
+  6 < styles.content.getLeft
+  6.select.pidInList = this,35
+  6.wrap = <tr><td>|</td>
+
+  10 < styles.content.get
+  10.wrap = <td id="content">|</td></tr>
+
+  20 < styles.content.getBorder
+  20.select.pidInList = this,35
+  20.wrap = <tr><td colspan="2" id="footer">|</td></tr>
+}
+*/
+
+[global]
+
+plugin {
+  tx_felogin_pi1._CSS_DEFAULT_STYLE >
+  tx_cssstyledcontent._CSS_DEFAULT_STYLE >
+}
+
+tx_directmail_pi1 {
+  absRefPrefix = {$plugin.tx_directmail_pi1.siteUrl}
+
+  10.template = TEXT
+  10.template.value = ###CONTENT###
+}
+
+
+# CSS styled content
+tt_content {
+  # Add inline CSS to csc-frame-rulerBefore
+  stdWrap.innerWrap.cObject.5 {
+    25 = TEXT
+    25.value = style="border-top: 1px solid #D4D5D6"
+    25.noTrimWrap = | |
+  }
+
+  # Support for imageorient with only inline CSS
+  image.20.layout {
+    default.value = ###IMAGES######TEXT###
+
+    # above-center:
+    0 = TEXT
+    0.value = <div style="text-align: center">###IMAGES###</div><div>###TEXT###</div>
+
+    # above-right
+    1.value = <div style="text-align: right">###IMAGES###</div><div>###TEXT###</div>
+
+    # above-left
+    2.value = <div>###IMAGES###</div><div>###TEXT###</div>
+
+    # below-center
+    8.value = <div>###TEXT###</div><div style="text-align: center">###IMAGES###</div>
+
+    # below-right
+    9.value = <div>###TEXT###</div><div style="text-align: right">###IMAGES###</div>
+
+    # below-left
+    10.value = <div>###TEXT###</div><div>###IMAGES###</div>
+
+    # intext-right
+    17.value = <div style="float:right">###IMAGES###</div><div>###TEXT###</div><div style="clear:right"></div>
+
+    # intext-left
+    18.value = <div style="float:left">###IMAGES###</div><div>###TEXT###</div><div style="clear:left"></div>
+
+    # intext-right-nowrap
+    25.value (
+      <table class="csc-textpic csc-textpic-intext-left-nowrap###CLASSES###">
+        <tr>
+          <td style="vertical-align:top">###TEXT###</td>
+          <td style="vertical-align:top">###IMAGES###</td>
+        </tr>
+      </table>
+    )
+
+    # intext-left-nowrap
+    26.value (
+      <table class="csc-textpic csc-textpic-intext-left-nowrap###CLASSES###">
+        <tr>
+          <td style="vertical-align:top">###IMAGES###</td>
+          <td style="vertical-align:top">###TEXT###</td>
+        </tr>
+      </table>
+    )
+  }
+}
