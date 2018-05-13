@@ -7,6 +7,7 @@ CREATE TABLE tx_dinnerclub_domain_model_registration (
   `count` int(11) NOT NULL DEFAULT '0',
   `vegetarian` int(11) NOT NULL DEFAULT '0',
   `original_count` int(11) NOT NULL DEFAULT '0',
+  `accepted_guidelines` VARCHAR(64) DEFAULT '' NOT NULL,
  
   PRIMARY KEY (`uid`),
   KEY `event` (`event`)
