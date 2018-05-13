@@ -2,9 +2,13 @@
 namespace CP\Dinnerclub\Domain\Model;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use GeorgRinger\News\Domain\Model\News;
 use NN\NnAddress\Domain\Model\Person;
+use NN\NnAddress\Domain\Repository\PersonRepository;
+use TYPO3\TtAddress\Domain\Repository\AddressRepository;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class DinnerclubEvent extends News {
 
@@ -26,11 +30,20 @@ class DinnerclubEvent extends News {
 	public $registrationLimit;
 
 	/**
-	 * @var \NN\NnAddress\Domain\Repository\PersonRepository
+	 * @var TYPO3\CMS\Extbase\Object\ObjectManagerInterface
 	 * @inject
-	 * @lazy
+	 */
+	protected $objectManager;
+
+	/**
+	 * @var \NN\NnAddress\Domain\Repository\PersonRepository
 	 */
 	protected $personRepository;
+
+	/**
+	 * @var \TYPO3\TtAddress\Domain\Repository\AddressRepository
+	 */
+	protected $addressRepository;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
@@ -70,6 +83,14 @@ class DinnerclubEvent extends News {
 		return $this->stringToObject($this->contactPerson);
 	}
 
+	public function initializeObject() {
+		if (ExtensionManagementUtility::isLoaded('nn_address')) {
+			$this->personRepository = $this->objectManager->get(PersonRepository::class);
+		}
+		if (ExtensionManagementUtility::isLoaded('tt_address')) {
+			$this->addressRepository = $this->objectManager->get(AddressRepository::class);
+		}
+	}
 
 	protected function stringToObject($ref) {
 		if(preg_match('/^(.*)_([0-9]*)$/', $ref, $matches)) {
@@ -81,7 +102,21 @@ class DinnerclubEvent extends News {
 				);
 				return $result;
 			case 'tx_nnaddress_domain_model_person':
-				return $this->personRepository->findByUid($matches[2]);
+				if ($this->personRepository) {
+					return $this->personRepository->findByUid($matches[2]);
+				} else {
+					return null;
+				}
+			case 'tt_address':
+				if ($this->addressRepository) {
+					$result = $this->addressRepository->findByUid($matches[2]);
+					$result->mails = array(
+						0 => array('email' => $result->getEmail()),
+					);
+					return $result;
+				} else {
+					return null;
+				}
 			}
 		}
 		return $this->cook;
