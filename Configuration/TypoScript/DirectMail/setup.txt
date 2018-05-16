@@ -1,10 +1,11 @@
 page = PAGE
-page {
-  10 = TEXT
-  10.typolink.parameter = 11
-}
 
-[loginUser = *]
+#page {
+#  10 = TEXT
+#  10.typolink.parameter = 11
+#}
+#
+#[loginUser = *]
 page {
   config {
     disableAllHeaderCode = 0
@@ -29,6 +30,12 @@ page {
     .indent {
       margin-left: 1em;
     }
+    .contenttable > tbody > tr > td {
+      vertical-align: top;
+    }
+    td > p:first-child {
+      margin-top: 0;
+    }
   )
 
   bodyTag = <body style="margin: 0 1em; font-family:sans-serif;">
@@ -38,8 +45,9 @@ page {
   10 < styles.content.get
 
   20 < styles.content.getBorder
-  20.select.pidInList = this,35
-  20.wrap = <div id="footer" style="color: #777777;margin: 20px 0;padding: 8px 0;">|</div>
+  20.select.pidInList = 35
+  20.stdWrap.override.cObject < styles.content.getBorder
+  20.stdWrap.wrap = <div id="footer" style="color: #777777;margin: 20px 0;padding: 8px 0;">|</div>
 }
 
 /*
