@@ -2,6 +2,7 @@
 namespace CP\Dinnerclub\Domain\Model;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use GeorgRinger\News\Domain\Model\News;
 use NN\NnAddress\Domain\Model\Person;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
@@ -26,24 +27,29 @@ class DinnerclubEvent extends News {
 	public $registrationLimit;
 
 	/**
+	 * @var TYPO3\CMS\Extbase\Object\ObjectManagerInterface
+	 * @inject @lazy
+	 */
+	protected $_objectManager;
+
+	/**
 	 * @var \NN\NnAddress\Domain\Repository\PersonRepository
-	 * @inject
 	 * @lazy
 	 */
-	protected $personRepository;
+	protected $_personRepository;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
 	 * @inject
 	 * @lazy
 	 */
-	protected $frontendUserRepository;
+	protected $_frontendUserRepository;
 
 	/**
 	 * @var \CP\Dinnerclub\Domain\Repository\RegistrationRepository
 	 * @inject
 	 */
-	protected $registrationRepository;
+	protected $_registrationRepository;
 
 	/**
 	 * @var string
@@ -75,13 +81,20 @@ class DinnerclubEvent extends News {
 		if(preg_match('/^(.*)_([0-9]*)$/', $ref, $matches)) {
 			switch($matches[1]) {
 			case 'fe_users':
-				$result = $this->frontendUserRepository->findByUid($matches[2]);
+				$result = $this->_frontendUserRepository->findByUid($matches[2]);
 				$result->mails = array(
 					0 => array('email' => $result->getEmail()),
 				);
 				return $result;
 			case 'tx_nnaddress_domain_model_person':
-				return $this->personRepository->findByUid($matches[2]);
+				if (!ExtensionManagementUtility::isLoaded('nn_address')) {
+					return;
+				}
+
+				if (!$this->_personRepository) {
+					$this->_personRepository = $this->_objectManager->get('NN\NnAddress\Domain\Repository\PersonRepository');
+				}
+				return $this->_personRepository->findByUid($matches[2]);
 			}
 		}
 		return $this->cook;
@@ -93,7 +106,7 @@ class DinnerclubEvent extends News {
 	 */
 	public function countPersons() {
 		$sum = 0;
-		foreach ($this->registrationRepository->findByEvent($this) as $registration) {
+		foreach ($this->_registrationRepository->findByEvent($this) as $registration) {
 			$sum -= $registration->originalCount;
 			$sum += $registration->count;
 		}
