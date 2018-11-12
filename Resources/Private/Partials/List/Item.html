@@ -18,15 +18,11 @@
 	    <n:link settings="{settings}" class="btn btn-lg btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
 	      Anmelden
 	    </n:link>
-	    <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
-	      Ab-/Ummelden
-	    </n:link>
+	    <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Ab-/Ummelden</n:link>
 	    </p>
 	    <p>
 	    <f:security.ifAuthenticated>
-	      <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
-		Anmeldungen
-	      </n:link>
+	      <n:link configuration="{parameter: settings.dinnerClubRegistrationOverviewPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Anmeldungen</n:link>
 	    </f:security.ifAuthenticated>
 	    </p>
 	  </div>
@@ -48,9 +44,7 @@
 	  <f:if condition="{newsItem -> dc:registrationAllowed()}">
 	  <n:link configuration="{parameter: settings.dinnerClubRegistrationFormPid}" settings="{settings}" class="btn-sm btn-success" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Anmelden</n:link>
 	  &nbsp;
-	  <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">
-	    Ab-/Ummelden
-	  </n:link>
+	  <n:link configuration="{parameter: settings.dinnerClubRegistrationModificationPid}" settings="{settings}" class="btn-sm btn-default" newsItem="{newsItem}" additionalAttributes="{role: 'button'}">Ab-/Ummelden</n:link>
 	  &nbsp;
 	  </f:if>
 	  <f:security.ifAuthenticated>
