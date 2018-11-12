@@ -5,7 +5,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use GeorgRinger\News\Domain\Model\News;
 use NN\NnAddress\Domain\Model\Person;
+use NN\NnAddress\Domain\Repository\PersonRepository;
+use TYPO3\TtAddress\Domain\Repository\AddressRepository;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class DinnerclubEvent extends News {
 
@@ -28,20 +31,23 @@ class DinnerclubEvent extends News {
 
 	/**
 	 * @var TYPO3\CMS\Extbase\Object\ObjectManagerInterface
-	 * @inject @lazy
+	 * @inject
 	 */
 	protected $_objectManager;
 
 	/**
 	 * @var \NN\NnAddress\Domain\Repository\PersonRepository
-	 * @lazy
 	 */
 	protected $_personRepository;
 
 	/**
+	 * @var \TYPO3\TtAddress\Domain\Repository\AddressRepository
+	 */
+	protected $_addressRepository;
+
+	/**
 	 * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
 	 * @inject
-	 * @lazy
 	 */
 	protected $_frontendUserRepository;
 
@@ -76,6 +82,14 @@ class DinnerclubEvent extends News {
 		return $this->stringToObject($this->contactPerson);
 	}
 
+	public function initializeObject() {
+		if (ExtensionManagementUtility::isLoaded('nn_address')) {
+			$this->_personRepository = $this->_objectManager->get(PersonRepository::class);
+		}
+		if (ExtensionManagementUtility::isLoaded('tt_address')) {
+			$this->_addressRepository = $this->_objectManager->get(AddressRepository::class);
+		}
+	}
 
 	protected function stringToObject($ref) {
 		if(preg_match('/^(.*)_([0-9]*)$/', $ref, $matches)) {
@@ -87,14 +101,21 @@ class DinnerclubEvent extends News {
 				);
 				return $result;
 			case 'tx_nnaddress_domain_model_person':
-				if (!ExtensionManagementUtility::isLoaded('nn_address')) {
-					return;
+				if ($this->_personRepository) {
+					return $this->_personRepository->findByUid($matches[2]);
+				} else {
+					return null;
 				}
-
-				if (!$this->_personRepository) {
-					$this->_personRepository = $this->_objectManager->get('NN\NnAddress\Domain\Repository\PersonRepository');
+			case 'tt_address':
+				if ($this->_addressRepository) {
+					$result = $this->_addressRepository->findByUid($matches[2]);
+					$result->mails = array(
+						0 => array('email' => $result->getEmail()),
+					);
+					return $result;
+				} else {
+					return null;
 				}
-				return $this->_personRepository->findByUid($matches[2]);
 			}
 		}
 		return $this->cook;

@@ -28,4 +28,9 @@ class Registration extends AbstractEntity {
 	 * @var \int
 	 */
 	public $originalCount;
+
+	/**
+	 * @var \string
+	 */
+	public $acceptedGuidelines;
 }

@@ -65,7 +65,7 @@ page.includeCSS {
 }
 
 page.includeJS {
-	bootstrap = EXT:dinnerclub/Resources/Public/JavaScript/bootstrap.min.css
+	// bootstrap = EXT:dinnerclub/Resources/Public/JavaScript/bootstrap.min.js
 }
 
 page.shortcutIcon = EXT:dinnerclub/Resources/Public/Icons/favicon.ico

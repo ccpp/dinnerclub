@@ -9,7 +9,7 @@ return array(
 	),
 	'types' => array(
 		'0' => array(
-			'showitem' => 'event, name, count, vegetarian, original_count'
+			'showitem' => 'event, name, count, vegetarian, original_count, accepted_guidelines'
 		)
 	),
 	'columns' => array(
@@ -47,6 +47,14 @@ return array(
 			'config' => array(
 				'type' => 'input',
 				'eval' => 'int,required',
+			),
+		),
+		'accepted_guidelines' => array(
+			'exclude' => 1,
+			'label' => 'Akzeptierte Bedingungen',
+			'config' => array(
+				'type' => 'input',
+				'readOnly' => 1,
 			),
 		),
 	),
