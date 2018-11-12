@@ -13,12 +13,6 @@ class RegistrationAllowedViewHelper extends AbstractViewHelper {
 	protected $registrationRepository;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-	 * @inject
-	 */
-	protected $configurationManager;
-
-	/**
 	 * @param CP\Dinnerclub\Domain\Model\DinnerclubEvent $newsItem
 	 */
 	public function render(DinnerclubEvent $newsItem = null) {
@@ -37,10 +31,9 @@ class RegistrationAllowedViewHelper extends AbstractViewHelper {
 			return false;
 		}
 
-		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'Dinnerclub', 'piRegistration');
-
-		if (@$settings['registrationCountLimit']) {
-			if ($newsItem->countPersons() >= $settings['registrationCountLimit']) {
+		$registrationCountLimit = $newsItem->getRegistrationCountLimit();
+		if ($registrationCountLimit) {
+			if ($newsItem->countPersons() >= $registrationCountLimit) {
 				return false;
 			}
 		}

@@ -63,6 +63,12 @@ class DinnerclubEvent extends News {
 	protected $_registrationRepository;
 
 	/**
+	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+	 * @inject
+	 */
+	protected $_configurationManager;
+
+	/**
 	 * @var string
 	 */
 	protected $notificationEmails;
@@ -115,6 +121,20 @@ class DinnerclubEvent extends News {
 	 */
 	public function getHasVeganOption() {
 		return ($this->flags & 4) == 4;
+	}
+
+	/**
+	 * Applies default from TypoScript if not set in record
+	 *
+	 * @return integer
+	 */
+	public function getRegistrationCountLimit() {
+		if ($this->registrationLimit) {
+			return $this->registrationLimit;
+		} else {
+			$settings = $this->_configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'Dinnerclub', 'piRegistration');
+			return $settings['registrationCountLimit'];
+		}
 	}
 
 	protected function stringToObject($ref) {

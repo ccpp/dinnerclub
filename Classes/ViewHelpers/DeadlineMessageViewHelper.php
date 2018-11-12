@@ -29,8 +29,10 @@ class DeadlineMessageViewHelper extends AbstractViewHelper {
 
 		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'Dinnerclub', 'piRegistration');
 		$whichMessage = $verbose ? 'Verbose' : 'Short';
-		if (@$settings['registrationCountLimit']) {
-			if ($event->countPersons() >= $settings['registrationCountLimit']) {
+
+		$registrationCountLimit = $event->getRegistrationCountLimit();
+		if ($registrationCountLimit) {
+			if ($event->countPersons() >= $registrationCountLimit) {
 				return $settings['maximumReachedMessage' . $whichMessage];
 			}
 		}
