@@ -25,6 +25,11 @@ class Registration extends AbstractEntity {
 	public $vegetarian;
 
 	/**
+	 * @var integer
+	 */
+	public $vegan;
+
+	/**
 	 * @var \int
 	 */
 	public $originalCount;

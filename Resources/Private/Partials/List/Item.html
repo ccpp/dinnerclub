@@ -10,6 +10,8 @@
 	  <h2>{newsItem.title}</h2>
 	  <p class="lead">{newsItem.teaser -> f:format.nl2br()}</p>
 	  <p>{newsItem.bodytext -> f:format.html()}</p>
+
+	  <f:if condition="{newsItem.registrationPossible}">
 	  <p>
 	  <div class="text-right">
 	    <p>
@@ -30,6 +32,7 @@
 	  </div>
 	  <span class="small">bisher: {dc:countRegistrations(newsItem: newsItem)}</span>
 	  <p><dc:deadlineMessage event="{newsItem}" /></p>
+	  </f:if>
 	  </p>
 	</div>
     </f:then>

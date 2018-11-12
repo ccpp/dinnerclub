@@ -42,6 +42,13 @@ return array(
 				'eval' => 'int',
 			),
 		),
+		'vegan' => array(
+			'label' => 'Count Vegans',
+			'config' => array(
+				'type' => 'input',
+				'eval' => 'int',
+			),
+		),
 		'original_count' => array(
 			'label' => 'Original count',
 			'config' => array(

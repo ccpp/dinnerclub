@@ -25,6 +25,11 @@ class DinnerclubEvent extends News {
 	protected $contactPerson;
 
 	/**
+	 * @var integer
+	 */
+	public $flags;
+
+	/**
 	 * @var \integer
 	 */
 	public $registrationLimit;
@@ -89,6 +94,27 @@ class DinnerclubEvent extends News {
 		if (ExtensionManagementUtility::isLoaded('tt_address')) {
 			$this->_addressRepository = $this->_objectManager->get(AddressRepository::class);
 		}
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isRegistrationPossible() {
+		return !($this->flags & 1);
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isMenuVegetarian() {
+		return ($this->flags & 2) == 2;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getHasVeganOption() {
+		return ($this->flags & 4) == 4;
 	}
 
 	protected function stringToObject($ref) {

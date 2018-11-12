@@ -4,16 +4,29 @@
 	    <p><f:translate key="day.{newsItem.datetime -> f:format.date(format: 'w')}" /> {newsItem.datetime -> f:format.date(format: 'j.')} <f:translate key="month.{newsItem.datetime -> f:format.date(format: 'm')}" /></p>
 	    <div class="form-group">
 	      <label for="n-persons" class="col-sm-4">Wie viele?</label>
-	      <div class="col-sm-8">
+	      <div class="col-sm-4">
 		<f:form.textfield type="number" additionalAttributes="{min: 1 max: 60 step:1}" size="2" maxlength="2" required="required" class="form-control" id="n-persons" property="count" value="2" />
 	      </div>
 	    </div>
+	    <f:if condition="{newsItem.menuVegetarian} == 0">
 	    <div class="form-group">
 	      <label for="n-vegetarian" class="col-sm-4">Davon Vegetarisch?</label>
-	      <div class="col-sm-8">
+	      <div class="col-sm-4">
 		<f:form.textfield type="number" additionalAttributes="{step:1}" class="form-control" id="n-vegetarian" property="vegetarian" value="" />
 	      </div>
+	      <f:if condition="{newsItem.hasVeganOption}">
+	      <div class="col-sm-4 form-control-static">(exkl. Vegan)</div>
+	      </f:if>
 	    </div>
+	    </f:if>
+	    <f:if condition="{newsItem.hasVeganOption}">
+	    <div class="form-group">
+	      <label for="n-vegan" class="col-sm-4">Davon Vegan?</label>
+	      <div class="col-sm-4">
+		<f:form.textfield type="number" additionalAttributes="{step:1}" class="form-control" id="n-vegan" property="vegan" value="" />
+	      </div>
+	    </div>
+	    </f:if>
 	    <div class="form-group">
 	      <label for="name" class="col-sm-4">Wer?</label>
 	      <div class="col-sm-8">

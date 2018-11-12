@@ -122,6 +122,7 @@ config.tx_extbase.persistence.classes {
 			columns {
 				tx_dinnerclub_notification_emails.mapOnProperty = notificationEmails
 				tx_dinnerclub_notification_last_notification.mapOnProperty = lastNotification
+				tx_dinnerclub_flags.mapOnProperty = flags
 				tx_dinnerclub_registration_limit.mapOnProperty = registrationLimit
 			}
 		}

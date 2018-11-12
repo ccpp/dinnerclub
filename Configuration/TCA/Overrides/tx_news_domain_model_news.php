@@ -11,6 +11,7 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['type']['config']['items
 	'tx_dinnerclub_cook,
 	tx_dinnerclub_contactperson,
 	tx_dinnerclub_notification_emails,
+	tx_dinnerclub_flags,
 	tx_dinnerclub_registration_limit',
 	'60', 'after:bodytext');
 
@@ -58,6 +59,17 @@ $GLOBALS['TCA']['tx_news_domain_model_news']['columns']['type']['config']['items
 		'label' => 'Benachrichtigungs-E-Mail(s)',
 		'config' => array(
 			'type' => 'input',
+		),
+	),
+	'tx_dinnerclub_flags' => array(
+		'label' => 'Einstellungen',
+		'config' => array(
+			'type' => 'check',
+			'items' => array(
+				array('Keine Anmeldung zulassen', ''),
+				array('Das Menue ist vegetarisch', ''),
+				array('Es gibt eine vegane Option zur Anmeldung', ''),
+			),
 		),
 	),
 	'tx_dinnerclub_registration_limit' => array(

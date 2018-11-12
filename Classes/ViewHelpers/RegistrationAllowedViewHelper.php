@@ -26,6 +26,10 @@ class RegistrationAllowedViewHelper extends AbstractViewHelper {
 			$newsItem = $this->renderChildren();
 		}
 
+		if (!$newsItem->isRegistrationPossible()) {
+			return false;
+		}
+
 		$deadline = clone $newsItem->getDatetime();
 		$deadline->modify("12:00");
 
