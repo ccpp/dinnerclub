@@ -36,6 +36,9 @@ page {
     td > p:first-child {
       margin-top: 0;
     }
+    .align-center {
+      text-align: center;
+    }
   )
 
   bodyTag = <body style="margin: 0 1em; font-family:sans-serif;">
