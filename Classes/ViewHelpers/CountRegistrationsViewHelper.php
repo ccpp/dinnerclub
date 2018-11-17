@@ -15,8 +15,9 @@ class CountRegistrationsViewHelper extends AbstractViewHelper {
 	/**
 	 * @param GeorgRinger\News\Domain\Model\News item
 	 * @param boolean vegetarian
+	 * @param boolean vegan
 	 */
-	public function render(News $newsItem = null, $vegetarian = null) {
+	public function render(News $newsItem = null, $vegetarian = null, $vegan = null) {
 		if (!$newsItem) {
 			$newsItem = $this->renderChildren();
 		}
@@ -24,6 +25,8 @@ class CountRegistrationsViewHelper extends AbstractViewHelper {
 		foreach ($this->registrationRepository->findByEvent($newsItem) as $registration) {
 			if ($vegetarian) {
 				$sum += $registration->vegetarian;
+			} elseif ($vegan) {
+				$sum += $registration->vegan;
 			} else {
 				$sum -= $registration->originalCount;
 				$sum += $registration->count;
