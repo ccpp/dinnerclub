@@ -287,14 +287,14 @@ i.fa {
 }
 
 .event-img-box{
-  position: relative;
-  width: 50%;
+  /*position: relative;*/
+  /*width: 50%;*/
   min-height: 300px;
-  float: right;
+  /*float: right;*/
 }
 
 .event-img-overlay{
-  position: absolute;
+  /*position: absolute;*/
   top: 0px;
   left: 0px;
   right: 0px;

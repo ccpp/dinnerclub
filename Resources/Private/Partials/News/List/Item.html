@@ -7,6 +7,9 @@
   <f:switch expression="{settings.templateLayout}">
     <f:case default="1">
             <div class="event-box shadow" style="background:white">
+            <div class="row">
+              <f:if condition="{newsItem.media}">
+              <div class="col-lg-6">
               <div class="event-img-box">
                 <div class="event-img-overlay">
                   <p class="img-overlay-text">
@@ -15,6 +18,9 @@
                 </div>
                 <f:render partial="Detail/MediaContainer" arguments="{media: newsItem.media, settings:settings}" />
               </div>
+              </div>
+              </f:if>
+              <div class="col-lg-6">
               <div class="event-text-box">
                 <h3>{newsItem.title}</h3>
                 <p class="lead">{newsItem.teaser -> f:format.nl2br()}</p>
@@ -25,6 +31,8 @@
                 <p>{dc:countRegistrations(newsItem: newsItem)} Anmeldungen</p>
                 <p><dc:deadlineMessage event="{newsItem}" /></p>
               </div>
+              </div>
+            </div>
             </div>
     </f:case>
   </f:switch>
