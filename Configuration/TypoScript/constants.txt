@@ -1,9 +1,0 @@
-absRefPrefix = /
-
-plugin.tx_dinnerclubtheme.settings {
-	phone = +43 (0) 512 ...
-	street = Gumppstraße 67
-	city = 6020 Innsbruck
-	email = dinnerclub@caritas-integrationshaus.at
-	facebook =
-}
