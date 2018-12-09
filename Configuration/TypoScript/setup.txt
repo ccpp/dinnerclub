@@ -128,3 +128,10 @@ config.tx_extbase.persistence.classes {
 		}
 	}
 }
+
+# section_frame
+tt_content.stdWrap.innerWrap.cObject {
+	# Dinnerclub Jumbotron
+	60 =< tt_content.stdWrap.innerWrap.cObject.default
+	60.20.10.value := appendString( jumbotron)
+}

@@ -2,7 +2,6 @@
 <f:layout name="Detail.html" />
 
 <f:section name="content">
-<div class="jumbotron">
 <f:switch expression="{settings.templateLayout}">
 <f:case value="55"><f:comment>Registration</f:comment>
   <f:if condition="{newsItem -> dc:registrationAllowed()}">
@@ -37,5 +36,4 @@
   <div>Template {settings.templateLayout} not implemented for detail page</div>
 </f:case>
 </f:switch>
-</div>
 </f:section>
