@@ -40,6 +40,20 @@ plugin.tx_news {
 	}
 }
 
+plugin.tx_dinnerclub {
+	view {
+		templateRootPaths {
+			10 = EXT:dinnerclub/Resources/Private/Templates/
+		}
+		partialRootPaths {
+			10 = EXT:dinnerclub/Resources/Private/Partials/
+		}
+		layoutRootPaths {
+			10 = EXT:dinnerclub/Resources/Private/Layouts/
+		}
+	}
+}
+
 lib.mainmenu = HMENU
 lib.mainmenu {
 	wrap = <ul class="nav nav-pills pull-right">|</ul>
