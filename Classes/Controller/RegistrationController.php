@@ -36,8 +36,10 @@ class RegistrationController extends ActionController {
 		$registration->setPid($registration->event->getPid());
 		$this->registrationRepository->add($registration);
 		$this->persistenceManager->persistAll();
+try {
 		$this->mailNotificationUtility->notifyRegistration($registration, $this->settings);
-
+} catch(\Exception $e) {
+}
 		$this->view->assign('event', $registration->event);
 		$this->view->assign('registration', $registration);
 	}
