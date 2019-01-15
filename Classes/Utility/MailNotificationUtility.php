@@ -78,7 +78,7 @@ class MailNotificationUtility {
 		$this->logger->info('Rendering mail with subject "' . $subject . '" to: ' . join(',', $to) . ', cc: ' . join(', ', $cc));
 
 		$mail = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Mail\\MailMessage');
-		$mail->setFrom('dinnerclub@' . GeneralUtility::getHostname(false));
+		$mail->setFrom($replyToEmail);
 		$mail->setTo($to);
 		$mail->setCC($cc);
 		if ($replyToEmail) $mail->setReplyTo($replyToEmail);
