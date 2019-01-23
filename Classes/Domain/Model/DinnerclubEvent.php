@@ -7,6 +7,7 @@ use GeorgRinger\News\Domain\Model\News;
 use NN\NnAddress\Domain\Model\Person;
 use NN\NnAddress\Domain\Repository\PersonRepository;
 use TYPO3\TtAddress\Domain\Repository\AddressRepository;
+use TYPO3\TtAddress\Domain\Model\Address;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -225,12 +226,14 @@ class DinnerclubEvent extends News {
 
 		$mails = array();
 
-		$name = $person->getFirstName() . ' ' . $person->getLastName();
+		$name = trim($person->getFirstName() . ' ' . $person->getLastName());
 		if ($person instanceof Person) {
 			foreach ($person->getMails() as $mail) {
 				$mails [$mail->getEmail()] = $name;
 			}
 		} elseif ($person instanceof FrontendUser) {
+			$mails [$person->getEmail()]= $name;
+		} elseif ($person instanceof Address) {
 			$mails [$person->getEmail()]= $name;
 		} else {
 			throw new \Exception("Invalid person class");
