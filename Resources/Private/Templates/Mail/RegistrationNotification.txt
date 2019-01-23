@@ -14,7 +14,7 @@ für euren bevorstehenden Dinnerclub-Abend am {event.datetime -> f:format.date(f
 </f:if> {registration.name -> f:format.raw()}: {registration.count} <f:if condition="{registration.vegetarian}">({registration.vegetarian} vegetarisch)</f:if><f:if condition="{registration.vegan}">({registration.vegan} vegan)</f:if>
 </f:for>
 
-Für die aktualisierte Liste meldet euch bitte unter http://www.caritas-integrationshaus.at/dinnerclub an.
+Für die aktualisierte Liste meldet euch bitte unter http://www.dinnerclub-innsbruck.at/ an.
 
 Herzliche Grüße
 Das Dinnerclub-Team
