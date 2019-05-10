@@ -42,15 +42,26 @@ page {
   )
 
   bodyTag = <body style="margin: 0 1em; font-family:sans-serif;">
-  6 < styles.content.getLeft
-  6.select.pidInList = this,35
+  6 < styles.content.get
+  6.select {
+    where = colPos=1
+    pidInList = this,35
+  }
 
   10 < styles.content.get
 
-  20 < styles.content.getBorder
-  20.select.pidInList = 35
-  20.stdWrap.override.cObject < styles.content.getBorder
-  20.stdWrap.wrap = <div id="footer" style="color: #777777;margin: 20px 0;padding: 8px 0;">|</div>
+  20 < styles.content.get
+  20 {
+    select {
+      where = colPos=3
+      pidInList = 35
+    }
+    stdWrap {
+      override.cObject < styles.content.get
+      override.cObject.select.where = colPos=3
+      wrap = <div id="footer" style="color: #777777;margin: 20px 0;padding: 8px 0;">|</div>
+    }
+  }
 }
 
 /*
