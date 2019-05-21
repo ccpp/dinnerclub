@@ -1,3 +1,4 @@
+[globalVar = TYPO3_LOADED_EXT|rtehtmlarea|type = S|L]
 RTE.default {
 	proc.allowedClasses := addToList(btn-default)
 	FE.proc.link.properties.class.allowedClasses = btn-default
@@ -7,6 +8,8 @@ RTE.default {
 	proc.page.properties.class.default = btn-default
 	buttons.link.page.properties.class.default = btn-default
 }
+[GLOBAL]
+
 RTE.classesAnchor {
 	dinnerclubButton {
 		name = Dinnerclub Button
