@@ -3,9 +3,11 @@ defined('TYPO3_MODE') or die();
 
 // Add TCA type 60 (Dinnerclub event)
 
-$GLOBALS['TCA']['tx_news_domain_model_news']['ctrl']['typeicons']['60'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('dinnerclub') . 'Resources/Public/Icons/favicon.ico';
+// Type icon (replacing deprecated typeicons by Icon API)
+$GLOBALS['TCA']['tx_news_domain_model_news']['ctrl']['typeicon_classes'][60] = 'dinnerclub';
+
+// Copy showitems and extend by our fields
 $GLOBALS['TCA']['tx_news_domain_model_news']['types'][60] = $GLOBALS['TCA']['tx_news_domain_model_news']['types'][0];
-$GLOBALS['TCA']['tx_news_domain_model_news']['columns']['type']['config']['items'][] = array("Dinnerclub event", 60);
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_news_domain_model_news',
 	'--div--;Dinnerclub,

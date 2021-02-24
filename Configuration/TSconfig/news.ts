@@ -8,6 +8,14 @@ tx_news.templateLayouts {
 }
 
 TCEFORM.tx_news_domain_model_news {
+	// Add type selector with icon
+	type {
+		addItems {
+			60 = Dinnerclub event
+			60.icon = dinnerclub
+		}
+	}
+
 	# General
 	istopnews.types.60.disabled = 1
 	sys_language_uid.types.60.disabled = 1
