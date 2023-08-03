@@ -13,6 +13,7 @@ plugin.tx_dinnerclub {
 		dinnerClubRegistrationPid = {$plugin.tx_dinnerclub.settings.registrationPid}
 		dinnerClubRegistrationOverviewPid = {$plugin.tx_dinnerclub.settings.registrationOverviewPid}
 		dinnerClubRegistrationModificationPid = {$plugin.tx_dinnerclub.settings.registrationModificationPid}
+		privacyStatementPage = {$plugin.tx_dinnerclub.settings.privacyStatementPage}
 
 		additionalNotificationEmails = {$plugin.tx_dinnerclub.settings.additionalNotificationEmails}
 		emailSubject = {$plugin.tx_dinnerclub.settings.emailSubject}
@@ -36,10 +37,19 @@ plugin.tx_news {
 	}
 	settings {
 		defaultDetailPid = {$plugin.tx_dinnerclub.settings.detailPid}
+# TODO remove these
 		dinnerClubRegistrationFormPid = {$plugin.tx_dinnerclub.settings.registrationFormPid}
 		dinnerClubRegistrationPid = {$plugin.tx_dinnerclub.settings.registrationPid}
 		dinnerClubRegistrationOverviewPid = {$plugin.tx_dinnerclub.settings.registrationOverviewPid}
 		dinnerClubRegistrationModificationPid = {$plugin.tx_dinnerclub.settings.registrationModificationPid}
+		dinnerclub {
+# TODO use these!
+			registrationFormPid = {$plugin.tx_dinnerclub.settings.registrationFormPid}
+			registrationPid = {$plugin.tx_dinnerclub.settings.registrationPid}
+			registrationOverviewPid = {$plugin.tx_dinnerclub.settings.registrationOverviewPid}
+			registrationModificationPid = {$plugin.tx_dinnerclub.settings.registrationModificationPid}
+			privacyStatementPage = {$plugin.tx_dinnerclub.settings.privacyStatementPage}
+		}
 	}
 }
 

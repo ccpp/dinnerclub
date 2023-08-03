@@ -25,6 +25,8 @@ plugin.tx_dinnerclub.settings.registrationPid =
 plugin.tx_dinnerclub.settings.registrationOverviewPid =
 # cat=plugin.tx_dinnerclub/links/b; type=int+; label=Page with registration modification form
 plugin.tx_dinnerclub.settings.registrationModificationPid =
+# cat=plugin.tx_dinnerclub/links/c; type=int+; label=Page with privacy statement
+plugin.tx_dinnerclub.settings.privacyStatementPage =
 
 styles.content.loginform.templateFile = EXT:dinnerclub/Resources/Private/Templates/Login.html
 
