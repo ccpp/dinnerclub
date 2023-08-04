@@ -1,7 +1,8 @@
 <?php
 namespace CP\Dinnerclub\ViewHelpers;
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3\CMS\Extbase\Annotation\Inject;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use GeorgRinger\News\Domain\Model\News;
 
 class CountRegistrationsViewHelper extends AbstractViewHelper {
@@ -11,6 +12,15 @@ class CountRegistrationsViewHelper extends AbstractViewHelper {
 	 * @inject
 	 */
 	protected $registrationRepository;
+
+	public function initializeArguments()
+	{
+		parent::initializeArguments();
+
+		$this->registerArgument('newsItem', News::class, 'News Item');
+		$this->registerArgument('vegetarian', 'bool', 'Vegetarian or not?');
+		$this->registerArgument('vegan', 'boolean', 'Vegan or not?');
+	}
 
 	/**
 	 * @param GeorgRinger\News\Domain\Model\News item

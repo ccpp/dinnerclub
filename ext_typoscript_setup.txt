@@ -1,5 +1,6 @@
 # ==============================================
 # Persistence object mapping configuration for tx_news
+# NOTE: this works for RTPO3 9 and below
 # ==============================================
 config.tx_extbase.persistence.classes {
 	GeorgRinger\News\Domain\Model\News {

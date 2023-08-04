@@ -1,7 +1,8 @@
 <?php
 namespace CP\Dinnerclub\ViewHelpers;
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3\CMS\Extbase\Annotation\Inject;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use CP\Dinnerclub\Domain\Model\DinnerclubEvent;
 
 class RegistrationAllowedViewHelper extends AbstractViewHelper {

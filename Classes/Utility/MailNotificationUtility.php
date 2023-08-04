@@ -9,19 +9,20 @@ use CP\Dinnerclub\Domain\Model\Registration;
 use CP\Dinnerclub\Domain\Model\DinnerclubEvent;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyObjectStorage;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 use GeorgRinger\News\Domain\Repository\NewsRepository;
 
 class MailNotificationUtility {
 
 	/**
 	 * @var TYPO3\CMS\Extbase\Object\ObjectManagerInterface
-	 * @inject @lazy
+	 * @Inject
 	 */
 	protected $objectManager;
 
 	/**
 	 * @var GeorgRinger\News\Domain\Repository\NewsRepository
-	 * @inject @lazy
+	 * @Inject
 	 */
 	protected $newsRepository;
 

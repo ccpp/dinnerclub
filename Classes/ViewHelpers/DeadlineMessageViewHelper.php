@@ -1,22 +1,31 @@
 <?php
 namespace CP\Dinnerclub\ViewHelpers;
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3\CMS\Extbase\Annotation\Inject;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use CP\Dinnerclub\Domain\Model\DinnerclubEvent;
 
 class DeadlineMessageViewHelper extends AbstractViewHelper {
 
 	/**
 	 * @var \CP\Dinnerclub\Domain\Repository\RegistrationRepository
-	 * @inject
+	 * @Inject
 	 */
 	protected $registrationRepository;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-	 * @inject
+	 * @Inject
 	 */
 	protected $configurationManager;
+
+	public function initializeArguments()
+	{
+		parent::initializeArguments();
+
+		$this->registerArgument('event', DinnerclubEvent::class, 'Dinnerclub Event (News Item)', false);
+		$this->registerArgument('verbose', 'boolean', 'Verbose?', false);
+	}
 
 	/**
 	 * @param CP\Dinnerclub\Domain\Model\DinnerclubEvent event

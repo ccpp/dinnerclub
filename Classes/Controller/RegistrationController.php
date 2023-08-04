@@ -1,6 +1,7 @@
 <?php
 namespace CP\Dinnerclub\Controller;
 
+use TYPO3\CMS\Extbase\Annotation\Inject;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use GeorgRinger\News\Domain\Model\News;
@@ -10,19 +11,19 @@ class RegistrationController extends ActionController {
 
 	/**
 	 * @var \CP\Dinnerclub\Domain\Repository\RegistrationRepository
-	 * @inject
+	 * @Inject
 	 */
 	protected $registrationRepository;
 
 	/**
 	 * @var TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
-	 * @inject @lazy
+	 * @Inject
 	 */
 	protected $persistenceManager;
 
 	/**
 	 * @var \CP\Dinnerclub\Utility\MailNotificationUtility
-	 * @inject @lazy
+	 * @Inject
 	 */
 	protected $mailNotificationUtility;
 

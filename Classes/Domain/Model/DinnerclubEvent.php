@@ -8,6 +8,7 @@ use NN\NnAddress\Domain\Model\Person;
 use NN\NnAddress\Domain\Repository\PersonRepository;
 use TYPO3\TtAddress\Domain\Repository\AddressRepository;
 use TYPO3\TtAddress\Domain\Model\Address;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -37,7 +38,7 @@ class DinnerclubEvent extends News {
 
 	/**
 	 * @var TYPO3\CMS\Extbase\Object\ObjectManagerInterface
-	 * @inject
+	 * @Inject
 	 */
 	protected $_objectManager;
 
@@ -53,19 +54,19 @@ class DinnerclubEvent extends News {
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
-	 * @inject
+	 * @Inject
 	 */
 	protected $_frontendUserRepository;
 
 	/**
 	 * @var \CP\Dinnerclub\Domain\Repository\RegistrationRepository
-	 * @inject
+	 * @Inject
 	 */
 	protected $_registrationRepository;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-	 * @inject
+	 * @Inject
 	 */
 	protected $_configurationManager;
 

@@ -141,6 +141,7 @@ config.tx_extbase.objects {
 	}
 }
 
+# TYPO3 9 and below...
 config.tx_extbase.persistence.classes {
 	CP\Dinnerclub\Domain\Model\DinnerclubEvent {
 		mapping {

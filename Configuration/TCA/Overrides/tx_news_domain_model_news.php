@@ -1,11 +1,12 @@
 <?php
 defined('TYPO3_MODE') or die();
+if (!$GLOBALS['TCA']['tx_news_domain_model_news']['types'][0]) die("News not loaded");
 
 // Add TCA type 60 (Dinnerclub event)
 
-$GLOBALS['TCA']['tx_news_domain_model_news']['ctrl']['typeicons']['60'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('dinnerclub') . 'Resources/Public/Icons/favicon.ico';
+$GLOBALS['TCA']['tx_news_domain_model_news']['ctrl']['typeicons']['60'] = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:dinnerclub/Resources/Public/Icons/favicon.ico');  // TODO test
 $GLOBALS['TCA']['tx_news_domain_model_news']['types'][60] = $GLOBALS['TCA']['tx_news_domain_model_news']['types'][0];
-$GLOBALS['TCA']['tx_news_domain_model_news']['columns']['type']['config']['items'][] = array("Dinnerclub event", 60);
+$GLOBALS['TCA']['tx_news_domain_model_news']['columns']['type']['config']['items'][60] = array("Dinnerclub event", 60);
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_news_domain_model_news',
 	'--div--;Dinnerclub,
